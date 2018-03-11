@@ -3,7 +3,7 @@ class CreateRoutines < ActiveRecord::Migration[5.1]
     create_table :routines do |t|
       t.string :name
       t.time :estimatedLength
-      t.belongs_to :users, index:true
+      t.belongs_to :user, index:true
       t.timestamps
     end
   end
