@@ -1,18 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import axios from "axios";
+import RoutinesList from "./Components/Routines/RoutinesList";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { routines: [] };
+    this.getRoutines = this.getRoutines.bind(this);
+  }
+
+  getRoutines() {
+    axios({ url: "http://localhost:3000/routines" }).then(response => {
+      console.log("getRoutines:", response.data);
+      this.setState({ routines: response.data });
+      console.log("state, routines:", this.state.routines);
+    });
+  }
+
+  // componentDidMount(){
+  //   this.getRoutines()
+  // }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Routines!</h1>
+        <RoutinesList 
+          getRoutines={this.getRoutines}
+          routines={this.state.routines}
+        />
       </div>
     );
   }
