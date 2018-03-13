@@ -16,6 +16,7 @@ class RoutinesList extends Component {
       <Routines
         routineDatum={routineDatum}
         index={index}
+        deleteRoutine={this.props.deleteRoutine}
       />
     )
   }

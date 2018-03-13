@@ -2,6 +2,16 @@ import React, { Component } from "react";
 
 class Routines extends Component {
 
+  constructor(props){
+    super(props)
+    this.deleteHandler = this.deleteHandler.bind(this)
+  }
+
+  deleteHandler(e){
+    e.preventDefault()
+    this.props.deleteRoutine(this.props.routineDatum.id)
+  }
+
   render() {
     const routineDatum = this.props.routineDatum;
     const id = routineDatum.id;
@@ -14,6 +24,7 @@ class Routines extends Component {
         <li>Routine id: {id}</li>
         <li>Routine name: {name}</li>  
         <li>Estimated length: {estimated_length}</li>
+        <button onClick={this.deleteHandler}>Delete routine</button>
       </ul>  
     )
   }

@@ -13,8 +13,10 @@ class JokesList extends Component {
   renderJokes(joke, index) {
     // console.log("renderJokes:",index)
     return (
-      <Jokes joke={joke}
-      index={index}
+      <Jokes 
+        joke={joke}
+        index={index}
+        deleteJoke={this.props.deleteJoke}
       />
     )
   }
