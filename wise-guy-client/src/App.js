@@ -7,11 +7,14 @@ import JokesList from "./Components/Jokes/JokesList"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { routines: [], jokes: [] };
+    this.state = { routines: [], jokes: []};
     this.getRoutines = this.getRoutines.bind(this);
+    this.addRoutine = this.addRoutine.bind(this)
     this.getJokes = this.getJokes.bind(this)
   }
 
+// Routines, Routines, ROUTINES!!
+// Get all routines without user_id
   getRoutines() {
     axios({ url: "http://localhost:3000/routines" }).then(response => {
       // console.log("getRoutines:", response.data);
@@ -19,7 +22,19 @@ class App extends Component {
       // console.log("state, routines:", this.state.routines);
     });
   }
+//Post new Routine without user-id
+  addRoutine(newRoutine){
+    axios({
+      url: "http://localhost:3000/routines",
+      method: "POST",
+      data: newRoutine
+    }).then(response =>{
+      this.getRoutines()
+    })
+  }
 
+// Jokes, Jokes, JOKES!!
+// Get all jokes without user_id
   getJokes() {
     axios({ url: "http://localhost:3000/jokes" }).then(response => {
       // console.log("getJokes:", response.data);
@@ -28,10 +43,9 @@ class App extends Component {
     });
   }
 
-  // componentDidMount(){
-    // this.getRoutines()
-  //   this.getJokes()
-  // }
+  componentDidMount(){
+
+  }
 
   render() {
     return (
@@ -39,6 +53,7 @@ class App extends Component {
         <h1>Routines!</h1>
         <RoutinesList 
           getRoutines={this.getRoutines}
+          addRoutine={this.addRoutine}
           routines={this.state.routines}
         />
         <JokesList

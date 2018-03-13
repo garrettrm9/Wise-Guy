@@ -8,9 +8,11 @@ class JokesList extends Component {
   }
 
   renderJokes(joke, index) {
-    console.log("renderJokes:",index)
+    // console.log("renderJokes:",index)
     return (
-      <Jokes joke={joke} index={index}/>
+      <Jokes joke={joke}
+      index={index}
+      />
     )
   }
 
@@ -19,10 +21,11 @@ class JokesList extends Component {
   }
 
   render() {
-    this.props.jokes.map(this.renderJokes);
+    const jokes = this.props.jokes.map(this.renderJokes);
     return (
       <div>
         <h2>Hello from JokesList!!!</h2>
+        <div className="jokes_list">{jokes}</div>
       </div>
     );
   }

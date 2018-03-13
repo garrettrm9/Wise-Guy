@@ -8,13 +8,12 @@ class Jokes extends Component {
     const name = joke.name;
     const joke_text = joke.joke_text;
     return (
-      <div>
-        <h3>Greetings from Jokes!!!</h3>
-        <p>Id: {id}</p>
-        <p>User Id: {user_id}</p>
-        <p>Name: {name}</p>
-        <p>Joke text: {joke_text}</p>
-      </div>
+      <ul key={id.toString()}>
+        <li>Id: {id}</li>
+        <li>User Id: {user_id}</li>
+        <li>Name: {name}</li>
+        <li>Joke text: {joke_text}</li>
+      </ul>
     );
   }
 }
