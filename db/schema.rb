@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180312143042) do
     t.bigint "user_id"
     t.string "name"
     t.string "joke_text"
+    t.string "estimated_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jokes_on_user_id"
@@ -36,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180312143042) do
   create_table "routines", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.time "estimated_length"
+    t.string "estimated_length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_routines_on_user_id"

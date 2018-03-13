@@ -29,7 +29,7 @@ class JokesController < ApplicationController
   private
 
   def joke_params
-    params.require(:jokes).permit(:name, :joke_text)
+    params.require(:jokes).permit(:name, :joke_text, :estimated_length)
   end
 
 end
