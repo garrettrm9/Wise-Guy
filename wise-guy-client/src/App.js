@@ -11,9 +11,11 @@ class App extends Component {
     this.getRoutines = this.getRoutines.bind(this);
     this.addRoutine = this.addRoutine.bind(this)
     this.deleteRoutine = this.deleteRoutine.bind(this)
+    this.editRoutine = this.editRoutine.bind(this)
     this.getJokes = this.getJokes.bind(this)
     this.addJoke = this.addJoke.bind(this)
     this.deleteJoke = this.deleteJoke.bind(this)
+    // this.editJoke = this.editJoke.bind(this)
   }
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
@@ -44,6 +46,19 @@ class App extends Component {
       method: "DELETE"
     }).then(response =>{
       // console.log("app deleteRoutine", response)
+      this.getRoutines()
+    })
+  }
+  // !!Edit Routine!!
+  editRoutine(routine, routineId) {
+    // console.log("app editRoutine", routine)
+    // console.log("editRoutine routineId", routineId)
+    axios({
+      url: `http://localhost:3000/routines/${routineId}`,
+      method: "PUT",
+      data: routine
+    }).then(response => {
+      // console.log("post-edit routine state", response.data)
       this.getRoutines()
     })
   }
@@ -88,6 +103,7 @@ class App extends Component {
           getRoutines={this.getRoutines}
           addRoutine={this.addRoutine}
           deleteRoutine={this.deleteRoutine}
+          editRoutine={this.editRoutine}
           routines={this.state.routines}
         />
         <JokesList

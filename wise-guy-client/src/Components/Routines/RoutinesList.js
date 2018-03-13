@@ -17,6 +17,7 @@ class RoutinesList extends Component {
         routineDatum={routineDatum}
         index={index}
         deleteRoutine={this.props.deleteRoutine}
+        editRoutine={this.props.editRoutine}
       />
     )
   }
@@ -52,9 +53,9 @@ class RoutinesList extends Component {
         <div className="routines_form">
           <form onSubmit={this.submitRoutine}>
             <label>Add a routine! </label>
-            <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.routines.user_id}/>
-            <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name' value={this.state.routines.name}/>
-            <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.routines.estimated_length}/>
+              <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.routines.user_id}/>
+              <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name' value={this.state.routines.name}/>
+              <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.routines.estimated_length}/>
             <button>Submit new routine</button>
           </form>
         </div>
