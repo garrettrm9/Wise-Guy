@@ -26,7 +26,7 @@ class Jokes extends Component {
 
   sendEditedJoke(e){
     e.preventDefault()
-    // console.log("joke sendEditedJoke", this.state.jokes)
+    console.log("joke sendEditedJoke", this.state.jokes)
     this.props.editJoke(this.state, this.props.joke.id)
     this.setState({isEditing: false})
   }
@@ -49,6 +49,7 @@ class Jokes extends Component {
     const user_id = joke.user_id;
     const name = joke.name;
     const joke_text = joke.joke_text;
+    const estimated_length = joke.estimated_length
     if (this.state.isEditing) {
       return (
         <div className="joke_form">
@@ -57,6 +58,7 @@ class Jokes extends Component {
             <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.jokes.user_id}/>
             <input onChange={this.changeHandler} type='text' placeholder='Joke name' name='name' value={this.state.jokes.name}/>
             <input onChange={this.changeHandler} type='text' placeholder='Joke text' name='joke_text' value={this.state.jokes.joke_text}/>
+            <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.jokes.estimated_length}/>
             <button onClick={this.editFormHandler}>Never mind, screw that edit</button>
             <button>Submit edited joke</button>    
           </form>
@@ -69,6 +71,7 @@ class Jokes extends Component {
         <li>Joke id: {id}</li>
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
+        <li>Estimated length: {estimated_length}</li>     
         <button onClick={this.deleteHandler}>Delete joke</button>
         <button onClick={this.editFormHandler}>Edit joke</button>
       </ul>
