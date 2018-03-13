@@ -15,7 +15,7 @@ class App extends Component {
     this.getJokes = this.getJokes.bind(this)
     this.addJoke = this.addJoke.bind(this)
     this.deleteJoke = this.deleteJoke.bind(this)
-    // this.editJoke = this.editJoke.bind(this)
+    this.editJoke = this.editJoke.bind(this)
   }
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
@@ -94,6 +94,19 @@ class App extends Component {
       this.getJokes()
     })
   }
+  // !!Edit Joke!!
+  editJoke(joke, jokeId) {
+    // console.log("app editJoke", joke)
+    // console.log("editJoke jokeId", jokeId)
+    axios({
+      url: `http://localhost:3000/jokes/${jokeId}`,
+      method: "PUT",
+      data: joke
+    }).then(response => {
+      // console.log("post-edit joke state", response.data)
+      this.getJokes()
+    })
+  }
 
   render() {
     return (
@@ -110,6 +123,7 @@ class App extends Component {
           getJokes={this.getJokes}
           addJoke={this.addJoke}
           deleteJoke={this.deleteJoke}
+          editJoke={this.editJoke}
           jokes={this.state.jokes}
         />  
       </div>

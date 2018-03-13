@@ -13,7 +13,7 @@ class Routines extends Component {
 
   deleteHandler(e){
     e.preventDefault()  
-    this.props.deleteRoutine(this.props.routineDatum.id)
+    this.props.deleteRoutine(this.props.routine.id)
   }
 
   editFormHandler(e){
@@ -27,7 +27,7 @@ class Routines extends Component {
   sendEditedRoutine(e){
     e.preventDefault()
     // console.log("routine editHandler", this.state.routines)
-    this.props.editRoutine(this.state, this.props.routineDatum.id)
+    this.props.editRoutine(this.state, this.props.routine.id)
     this.setState({isEditing: false})
   }
 
@@ -43,11 +43,11 @@ class Routines extends Component {
   }
 
   render() {
-    const routineDatum = this.props.routineDatum;
-    const id = routineDatum.id;
-    const user_id = routineDatum.user_id
-    const name = routineDatum.name
-    const estimated_length = routineDatum.estimated_length
+    const routine = this.props.routine;
+    const id = routine.id;
+    const user_id = routine.user_id
+    const name = routine.name
+    const estimated_length = routine.estimated_length
     if (this.state.isEditing) {
       return (
         <div className="routine_form">
@@ -56,7 +56,7 @@ class Routines extends Component {
             <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.routines.user_id}/>
             <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name' value={this.state.routines.name}/>
             <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.routines.estimated_length}/>
-            <button onChange={this.editFormHandler}>Never mind, screw that edit</button>
+            <button onClick={this.editFormHandler}>Never mind, screw that edit</button>
             <button>Submit edited routine</button>
           </form>
         </div>

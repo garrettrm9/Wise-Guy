@@ -10,11 +10,11 @@ class RoutinesList extends Component {
     this.changeHandler = this.changeHandler.bind(this)
   }
 
-  renderRoutines(routineDatum, index) {
+  renderRoutines(routine, index) {
     // console.log("renderRoutines:", index);
     return (
       <Routines
-        routineDatum={routineDatum}
+        routine={routine}
         index={index}
         deleteRoutine={this.props.deleteRoutine}
         editRoutine={this.props.editRoutine}

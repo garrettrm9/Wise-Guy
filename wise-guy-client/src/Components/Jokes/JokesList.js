@@ -17,6 +17,7 @@ class JokesList extends Component {
         joke={joke}
         index={index}
         deleteJoke={this.props.deleteJoke}
+        editJoke={this.props.editJoke}
       />
     )
   }
