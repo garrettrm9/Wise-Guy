@@ -10,9 +10,9 @@ class Routines extends Component {
     const estimated_length = routineDatum.estimated_length
     return (
       <ul key={id.toString()}>
-        <li>Routine name: {name}</li>  
-        <li>Routine user_id: {user_id}</li>
+        <li>User_id: {user_id}</li>
         <li>Routine id: {id}</li>
+        <li>Routine name: {name}</li>  
         <li>Estimated length: {estimated_length}</li>
       </ul>  
     )

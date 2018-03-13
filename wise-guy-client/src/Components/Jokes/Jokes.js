@@ -9,8 +9,8 @@ class Jokes extends Component {
     const joke_text = joke.joke_text;
     return (
       <ul key={id.toString()}>
-        <li>Id: {id}</li>
         <li>User Id: {user_id}</li>
+        <li>Joke id: {id}</li>
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
       </ul>

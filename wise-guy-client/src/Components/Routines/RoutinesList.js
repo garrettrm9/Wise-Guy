@@ -4,7 +4,7 @@ import Routines from "./Routines";
 class RoutinesList extends Component {
   constructor(props) {
     super(props);
-    this.state = {newRoutines: []}
+    this.state = {routines:{}}
     this.renderRoutines = this.renderRoutines.bind(this);
     this.submitRoutine = this.submitRoutine.bind(this)
     this.changeHandler = this.changeHandler.bind(this)
@@ -21,15 +21,20 @@ class RoutinesList extends Component {
   }
 
   changeHandler(e){
+    // console.log("Routine changeHandler", his.state)
     e.preventDefault()
-    this.setState({newRoutines: {routines: {[e.target.name]: e.target.value}}})
-    // console.log("Routine changeHandler",this.state)
+    const key = e.target.name
+    const value = e.target.value
+    this.setState(prevState => {
+      prevState.routines[key] = value
+      return prevState
+    })
   }
 
   submitRoutine(e){
     e.preventDefault()
-    this.props.addRoutine(this.state.newRoutines)
-    console.log("Routine submitRoutine",this.state)
+    this.props.addRoutine(this.state)
+    // console.log("Routine submitRoutine",this.state)
   }
 
   componentDidMount() {
@@ -46,10 +51,10 @@ class RoutinesList extends Component {
         <div className="routines_form">
           <form onSubmit={this.submitRoutine}>
             <label>Add a routine! </label>
-            <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id'/>
-            <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name'/>
-            <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length'/>
-            <button>Submit</button>
+            <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.routines.user_id}/>
+            <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name' value={this.state.routines.name}/>
+            <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.routines.estimated_length}/>
+            <button>Submit new routine</button>
           </form>
         </div>
       </div>  

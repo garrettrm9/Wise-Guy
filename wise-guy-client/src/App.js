@@ -13,8 +13,9 @@ class App extends Component {
     this.getJokes = this.getJokes.bind(this)
   }
 
-// Routines, Routines, ROUTINES!!
-// Get all routines without user_id
+// !!ROUTINES, ROUTINES, ROUTINES!!
+
+// !!Get all routines without user_id!!
   getRoutines() {
     axios({ url: "http://localhost:3000/routines" }).then(response => {
       // console.log("getRoutines:", response.data);
@@ -22,19 +23,21 @@ class App extends Component {
       // console.log("state, routines:", this.state.routines);
     });
   }
-//Post new Routine without user-id
+// !!Post new Routine without user-id!!
   addRoutine(newRoutine){
+    // console.log("app addRoutine:", newRoutine)
     axios({
       url: "http://localhost:3000/routines",
       method: "POST",
       data: newRoutine
-    }).then(response =>{
+    }).then(response => {
       this.getRoutines()
     })
   }
 
-// Jokes, Jokes, JOKES!!
-// Get all jokes without user_id
+// !!JOKES, JOKES, JOKES!!
+
+// !!Get all jokes without user_id!!
   getJokes() {
     axios({ url: "http://localhost:3000/jokes" }).then(response => {
       // console.log("getJokes:", response.data);
@@ -42,9 +45,16 @@ class App extends Component {
       // console.log("state, jokes:", this.state.jokes);
     });
   }
-
-  componentDidMount(){
-
+// !!Post new Routine without user-id!!
+  addJoke(newJoke){
+    // console.log("app addJoke", newJoke)
+    axios({
+      url: "http://localhost:3000/jokes",
+      method: "POST",
+      data: newJoke
+    }).then(response => {
+      this.getJokes()
+    })
   }
 
   render() {
@@ -58,6 +68,7 @@ class App extends Component {
         />
         <JokesList
           getJokes={this.getJokes}
+          addJoke={this.addJoke}
           jokes={this.state.jokes}
         />  
       </div>
