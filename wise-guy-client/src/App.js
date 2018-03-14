@@ -177,6 +177,7 @@ class App extends Component {
   logout(ev) {
     ev.preventDefault();
     TokenService.destroy();
+    console.log("app logout: totally signed out")
   }
 
   checkLogin() {

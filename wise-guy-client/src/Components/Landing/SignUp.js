@@ -2,12 +2,48 @@ import React, { Component } from "react";
 
   class SignUp extends Component {
 
-    render(){
-      return(
-        <h2>This is SignUp</h2>
-      )
+    constructor(props){
+      super(props)
+      this.state = {
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: ""
+      }
+      this.changeHandler = this.changeHandler.bind(this)
+      this.loginUser = this.loginUser.bind(this)   
     }
 
+    changeHandler(e){
+      e.preventDefault()
+      const key = e.target.name
+      const value = e.target.value
+      this.setState(prevState => {
+        prevState[key] = value
+        return prevState
+      })
+      // console.log("landing changeHandler", this.state)
+    }
+
+    loginUser(e){
+      e.preventDefault()
+      this.props.login(this.state)
+    }    
+
+    render(){
+      return(
+        <div className="login">
+         <form onSubmit={this.loginUser}>
+            <label>Login </label>
+              <input onChange={this.changeHandler} type='text' placeholder='First name' name='first_name' value={this.state.first_name}/>
+              <input onChange={this.changeHandler} type='text' placeholder='Last name' name='last_name' value={this.state.last_name}/>
+              <input onChange={this.changeHandler} type='text' placeholder='Email' name='email' value={this.state.email}/>
+              <input onChange={this.changeHandler} type='text' placeholder='Password' name='password' value={this.state.password}/>
+            <button>Login yo'self</button>
+          </form>
+        </div>
+      )
+    }
   }
 
 export default SignUp
