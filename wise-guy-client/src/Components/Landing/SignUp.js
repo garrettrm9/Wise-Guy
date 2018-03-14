@@ -5,8 +5,6 @@ import React, { Component } from "react";
     constructor(props){
       super(props)
       this.state = {
-        first_name: "",
-        last_name: "",
         email: "",
         password: ""
       }
@@ -35,8 +33,6 @@ import React, { Component } from "react";
         <div className="login">
          <form onSubmit={this.loginUser}>
             <label>Login </label>
-              <input onChange={this.changeHandler} type='text' placeholder='First name' name='first_name' value={this.state.first_name}/>
-              <input onChange={this.changeHandler} type='text' placeholder='Last name' name='last_name' value={this.state.last_name}/>
               <input onChange={this.changeHandler} type='text' placeholder='Email' name='email' value={this.state.email}/>
               <input onChange={this.changeHandler} type='text' placeholder='Password' name='password' value={this.state.password}/>
             <button>Login yo'self</button>

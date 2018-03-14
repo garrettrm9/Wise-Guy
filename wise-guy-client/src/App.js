@@ -161,6 +161,7 @@ class App extends Component {
   // as above, we are saving the token locally using
   // the TokenService
   login(data) {
+    // console.log("app login", data)
     axios('http://localhost:3000/users/login', {
       method: "POST",
       data

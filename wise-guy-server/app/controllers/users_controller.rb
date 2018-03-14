@@ -46,10 +46,10 @@ class UsersController < ApplicationController
     end
 
     def login
-      username = params[:username]
+      email = params[:email]
       password = params[:password]
 
-      user = User.find_from_credentials username, password
+      user = User.find_from_credentials email, password
       if user.nil?
         render nothing: true, status: 401
       else 
