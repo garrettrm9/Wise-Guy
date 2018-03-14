@@ -145,14 +145,15 @@ class App extends Component {
   // !!!AUTH AUTH AUTH!!!
 
  register(data) {
-    console.log("app register", data)
+    // console.log("app register", data)
     axios('http://localhost:3000/users/', {
       method: "POST",
       data
     }).then(resp => {
       TokenService.save(resp.data.token)
-      console.log("register", resp)
-      // this.setState({user: resp})
+      // console.log("register", resp.data)
+      this.setState({user: resp.data.user})
+      // console.log("register", this.state.user)
     })
     .catch(err => console.log(`err: ${err}`));
   }
@@ -167,8 +168,9 @@ class App extends Component {
       data
     }).then(resp => {
       TokenService.save(resp.data.token);
-      console.log("login", resp)
-      // this.setState({user: resp})
+      // console.log("login", resp.data.user)
+      this.setState({user: resp.data.user})
+      // console.log("login", this.state.user)      
     })
     .catch(err => console.log(`err: ${err}`));
   }
