@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
       if new_user.valid?
         new_user.save
-        render json: {token: gen_token(new_user.id)}
+        render json: {user: new_user, token: gen_token(new_user.id)}
       else
         render nothing: true, status: 401
       end
