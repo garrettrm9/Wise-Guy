@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   post 'users/:id/jokes' => 'jokes#create'
   resources :routines, :except => ['show']
   get 'users/:id/routines' => 'routines#show'
+  post 'users/:id/routines' => 'routines#create'  
   resources :routine_with_jokes
 end
