@@ -36,11 +36,13 @@ class RoutinesList extends Component {
   submitRoutine(e){
     e.preventDefault()
     this.props.addRoutine(this.state)
-    // console.log("Routine submitRoutine",this.state)
+    console.log("Routine submitRoutine",this.state)
   }
 
   componentDidMount() {
-    this.props.getRoutines();
+    this.props.getRoutines(this.props.user.id);
+    console.log("RoutinesList didmount", this.props.user)
+    // this.setState({routines: {user_id: this.props.user.id}})    
   }
 
   render() {
@@ -53,7 +55,6 @@ class RoutinesList extends Component {
         <div className="routines_form">
           <form onSubmit={this.submitRoutine}>
             <label>Add a routine! </label>
-              <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.routines.user_id}/>
               <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name' value={this.state.routines.name}/>
               <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.routines.estimated_length}/>
             <button>Submit new routine</button>

@@ -5,8 +5,11 @@ class RoutinesController < ApplicationController
   end 
 
   def show
-    routine = Routine.find(params[:id])
-    render json: routine
+    # routine = Routine.find(params[:id])
+    # render json: routine
+    current_user = User.find(params[:id])
+    routines = current_user.routines
+    render json: routines
   end
 
   def create
@@ -26,10 +29,16 @@ class RoutinesController < ApplicationController
     render plain: "Routine deleted ... it sucked anyway"
   end
 
+  # def user_routines 
+  #   current_user = User.find(params[:user_id])
+  #   routines = current_user.routines
+  #   render json: routines
+  # end
+
   private
 
   def routine_params
-    params.require(:routines).permit(:name, :estimated_length)
+    params.require(:routines).permit(:name, :estimated_length, :user_id)
   end
 
 end

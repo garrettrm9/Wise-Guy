@@ -40,7 +40,7 @@ class JokesList extends Component {
   }
 
   componentDidMount() {
-    this.props.getJokes();
+    this.props.getJokes(this.props.user.id);
   }
 
   render() {
@@ -52,7 +52,6 @@ class JokesList extends Component {
         <div className="jokes_form">
           <form onSubmit={this.submitJoke}>
             <label>Add a joke! </label>
-            <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.jokes.user_id}/>          
             <input onChange={this.changeHandler} type='text' placeholder='Joke name' name='name' value={this.state.jokes.name}/>          
             <input onChange={this.changeHandler} type='text' placeholder='Joke text' name='joke_text' value={this.state.jokes.joke_text}/>          
             <input onChange={this.changeHandler} type='text' placeholder='Joke length' name='estimated_length' value={this.state.jokes.estimated_length}/>          

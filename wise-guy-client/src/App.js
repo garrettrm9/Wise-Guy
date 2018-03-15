@@ -10,7 +10,7 @@ import TokenService from './services/TokenService';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { routines: [], jokes: [], isLoggedIn: false, user: {}};
+    this.state = { routines: [], jokes: [], user: {}};
     this.getRoutines = this.getRoutines.bind(this);
     this.addRoutine = this.addRoutine.bind(this)
     this.deleteRoutine = this.deleteRoutine.bind(this)
@@ -27,10 +27,10 @@ class App extends Component {
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
 
-  // !!Get all routines without user_id!!
-  getRoutines() {
+  // !!Get all routines with user_id!!
+  getRoutines(id) {
     axios({ 
-      url: "http://localhost:3000/routines",
+      url: `http://localhost:3000/routines/users/${id}`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       } 
@@ -86,10 +86,10 @@ class App extends Component {
 
   // !!JOKES, JOKES, JOKES!!
 
-  // !!Get all jokes without user_id!!
-  getJokes() {
+  // !!Get all jokes with user_id!!
+  getJokes(id) {
     axios({ 
-      url: "http://localhost:3000/jokes",
+      url: `http://localhost:3000/jokes/users/${id}`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       }        
@@ -209,6 +209,7 @@ class App extends Component {
           deleteRoutine={this.deleteRoutine}
           editRoutine={this.editRoutine}
           routines={this.state.routines}
+          user={this.state.user}
         />
         <br />        
         <JokesList
@@ -217,6 +218,7 @@ class App extends Component {
           deleteJoke={this.deleteJoke}
           editJoke={this.editJoke}
           jokes={this.state.jokes}
+          user={this.state.user}
         />
         <br />          
       </div>

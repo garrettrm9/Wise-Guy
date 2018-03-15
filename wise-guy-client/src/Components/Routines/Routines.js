@@ -53,7 +53,6 @@ class Routines extends Component {
         <div className="routine_form">
           <form onSubmit={this.sendEditedRoutine}>
             <label>Edit this routine</label>
-            <input onChange={this.changeHandler} type='text' placeholder='User_id' name='user_id' value={this.state.routines.user_id}/>
             <input onChange={this.changeHandler} type='text' placeholder='Routine name' name='name' value={this.state.routines.name}/>
             <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.routines.estimated_length}/>
             <button onClick={this.editFormHandler}>Never mind, screw that edit</button>
