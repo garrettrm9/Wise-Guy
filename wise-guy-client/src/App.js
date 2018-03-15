@@ -10,7 +10,7 @@ import TokenService from './services/TokenService';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { routines: [], jokes: [], user: {}};
+    this.state = { routines: [], jokes: [], user: {}, isLoggedIn: false};
     this.getRoutines = this.getRoutines.bind(this);
     this.addRoutine = this.addRoutine.bind(this)
     this.deleteRoutine = this.deleteRoutine.bind(this)
@@ -22,7 +22,6 @@ class App extends Component {
     this.register = this.register.bind(this)
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
-    this.checkLogin = this.checkLogin.bind(this)
     // this.setJokesStateWithUserId = this.setJokesStateWithUserId.bind(this)
     // this.setRoutinesStateWithUserId = this.setRoutinesStateWithUserId.bind(this)
   }
@@ -156,7 +155,10 @@ class App extends Component {
     }).then(resp => {
       TokenService.save(resp.data.token)
       // console.log("register", resp.data)
-      this.setState({user: resp.data.user})
+      this.setState({
+        user: resp.data.user,
+        isLoggedIn: true
+      })
       // console.log("register", this.state.user)
       this.getRoutines(this.state.user.id)
       this.getJokes(this.state.user.id)            
@@ -172,7 +174,10 @@ class App extends Component {
     }).then(resp => {
       TokenService.save(resp.data.token);
       // console.log("login", resp.data.user)
-      this.setState({user: resp.data.user})
+      this.setState({
+        user: resp.data.user,
+        isLoggedIn: true
+      })
       // console.log("login", this.state.user)
       this.getRoutines(this.state.user.id) 
       this.getJokes(this.state.user.id)                       
@@ -183,17 +188,18 @@ class App extends Component {
   logout(ev) {
     ev.preventDefault();
     TokenService.destroy();
+    this.setState({isLoggedIn: false})
     console.log("app logout: totally signed out")
   }
 
-  checkLogin() {
-    axios('http://localhost:3000/isLoggedIn', {
-      headers: {
-        Authorization: `Bearer ${TokenService.read()}`,
-      },
-    }).then(resp => console.log(resp))
-    .catch(err => console.log(err));
-  }
+  // checkLogin() {
+  //   axios('http://localhost:3000/isLoggedIn', {
+  //     headers: {
+  //       Authorization: `Bearer ${TokenService.read()}`,
+  //     },
+  //   }).then(resp => console.log(resp))
+  //   .catch(err => console.log(err));
+  // }
 
   render() {
     return (
