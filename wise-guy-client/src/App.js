@@ -60,14 +60,14 @@ class App extends Component {
   // !!Delete Routine!!
   deleteRoutine(id) {
     axios({
-      url: `http://localhost:3000/routines/${id}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/routines/${id}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       }       
     }).then(response =>{
       // console.log("app deleteRoutine", response)
-      this.getRoutines()
+      this.getRoutines(this.state.user.id)
     })
   }
   // !!Edit Routine!!
@@ -120,14 +120,14 @@ class App extends Component {
   // !!Delete Joke!!
   deleteJoke(id) {
     axios({
-      url: `http://localhost:3000/jokes/${id}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${id}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       }       
     }).then(response =>{
       // console.log("app deleteJoke", response)
-      this.getJokes()
+      this.getJokes(this.state.user.id)
     })
   }
   // !!Edit Joke!!

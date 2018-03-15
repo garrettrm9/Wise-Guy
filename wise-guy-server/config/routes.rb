@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   resources :users
   get 'isLoggedIn', :to => 'users#is_logged_in'
   post 'users/login', :to => 'users#login'
-  resources :jokes, :except => ['show', 'post']
+  resources :jokes, :except => ['show', 'post', 'delete']
   get 'users/:id/jokes' => 'jokes#show'
   post 'users/:id/jokes' => 'jokes#create'
+  delete 'users/:id/jokes/:id' => 'jokes#destroy'
   resources :routines, :except => ['show']
   get 'users/:id/routines' => 'routines#show'
   post 'users/:id/routines' => 'routines#create'  
+  delete 'users/:id/routines/:id' => 'routines#destroy'
   resources :routine_with_jokes
 end
