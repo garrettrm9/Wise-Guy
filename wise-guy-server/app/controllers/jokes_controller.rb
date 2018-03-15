@@ -5,8 +5,11 @@ class JokesController < ApplicationController
   end 
 
   def show
-    joke = Joke.find(params[:id])
-    render json: joke
+    # joke = Joke.find(params[:id])
+    # render json: joke
+    current_user = User.find(params[:id])
+    jokes = current_user.jokes
+    render json: jokes
   end
 
   def create
