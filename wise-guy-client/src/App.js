@@ -75,7 +75,7 @@ class App extends Component {
     // console.log("app editRoutine", routine)
     // console.log("editRoutine routineId", routineId)
     axios({
-      url: `http://localhost:3000/routines/${routineId}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/routines/${routineId}`,
       method: "PUT",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
@@ -83,7 +83,7 @@ class App extends Component {
       data: routine
     }).then(response => {
       // console.log("post-edit routine state", response.data)
-      this.getRoutines()
+      this.getRoutines(this.state.user.id)
     })
   }
 
@@ -135,7 +135,7 @@ class App extends Component {
     // console.log("app editJoke", joke)
     // console.log("editJoke jokeId", jokeId)
     axios({
-      url: `http://localhost:3000/jokes/${jokeId}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${jokeId}`,
       method: "PUT",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
@@ -143,7 +143,7 @@ class App extends Component {
       data: joke
     }).then(response => {
       // console.log("post-edit joke state", response.data)
-      this.getJokes()
+      this.getJokes(this.state.user.id)
     })
   }
   // !!!AUTH AUTH AUTH!!!
