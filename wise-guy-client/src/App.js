@@ -2,8 +2,9 @@ import React, { Component } from "react";
 // import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import "./App.css";
 import axios from "axios";
-import RoutinesList from "./Components/Routines/RoutinesList";
-import JokesList from "./Components/Jokes/JokesList"
+import RoutinesPage from "./Components/Routines/RoutinesPage";
+import JokesPage from "./Components/Jokes/JokesPage"
+import ProfilePage from "./Components/Profile/ProfilePage"
 import Landing from "./Components/Landing/Landing"
 import TokenService from './services/TokenService';
 
@@ -39,7 +40,7 @@ class App extends Component {
       // console.log("getRoutines:", response.data);
       this.setState({ routines: response.data });
       // console.log("state, routines:", this.state.routines);
-    });
+    }).catch(err => console.log(`err: ${err}`));
   }
   // !!Post new Routine without user-id!!
   addRoutine(newRoutine){
@@ -53,7 +54,7 @@ class App extends Component {
       data: newRoutine
     }).then(response => {
       this.getRoutines(this.state.user.id)
-    })
+    }).catch(err => console.log(`err: ${err}`));    
   }
 
   // !!Delete Routine!!
@@ -67,7 +68,7 @@ class App extends Component {
     }).then(response =>{
       // console.log("app deleteRoutine", response)
       this.getRoutines(this.state.user.id)
-    })
+    }).catch(err => console.log(`err: ${err}`));
   }
   // !!Edit Routine!!
   editRoutine(routine, routineId) {
@@ -83,7 +84,7 @@ class App extends Component {
     }).then(response => {
       // console.log("post-edit routine state", response.data)
       this.getRoutines(this.state.user.id)
-    })
+    }).catch(err => console.log(`err: ${err}`));
   }
 
   // !!JOKES, JOKES, JOKES!!
@@ -99,12 +100,12 @@ class App extends Component {
       // console.log("getJokes:", response.data);
       this.setState({ jokes: response.data });
       // console.log("state, jokes:", this.state.jokes);
-    });
+    }).catch(err => console.log(`err: ${err}`));
   }
   // !!Post new Routine without user-id!!
   addJoke(newJoke){
-    console.log("app addJoke", newJoke)
-    console.log("app addJoke", this.state.user.id)
+    // console.log("app addJoke", newJoke)
+    // console.log("app addJoke", this.state.user.id)
     axios({
       url: `http://localhost:3000/users/${this.state.user.id}/jokes`,
       method: "POST",
@@ -114,7 +115,7 @@ class App extends Component {
       data: newJoke
     }).then(response => {
       this.getJokes(this.state.user.id)
-    })
+    }).catch(err => console.log(`err: ${err}`));
   }
   // !!Delete Joke!!
   deleteJoke(id) {
@@ -127,7 +128,7 @@ class App extends Component {
     }).then(response =>{
       // console.log("app deleteJoke", response)
       this.getJokes(this.state.user.id)
-    })
+    }).catch(err => console.log(`err: ${err}`));
   }
   // !!Edit Joke!!
   editJoke(joke, jokeId) {
@@ -143,7 +144,7 @@ class App extends Component {
     }).then(response => {
       // console.log("post-edit joke state", response.data)
       this.getJokes(this.state.user.id)
-    })
+    }).catch(err => console.log(`err: ${err}`));
   }
   // !!!AUTH AUTH AUTH!!!
 
@@ -207,13 +208,9 @@ class App extends Component {
         <Landing
           register={this.register}
           login={this.login}
-          logout={this.logout}
-          checkLogin={this.checkLogin}
         />
         <br />        
-        <h1>Routines!</h1>
-        <RoutinesList 
-          getRoutines={this.getRoutines}
+        <RoutinesPage 
           addRoutine={this.addRoutine}
           deleteRoutine={this.deleteRoutine}
           editRoutine={this.editRoutine}
@@ -221,8 +218,7 @@ class App extends Component {
           user={this.state.user}
         />
         <br />        
-        <JokesList
-          getJokes={this.getJokes}
+        <JokesPage
           addJoke={this.addJoke}
           deleteJoke={this.deleteJoke}
           editJoke={this.editJoke}
@@ -230,6 +226,7 @@ class App extends Component {
           user={this.state.user}
         />
         <br />          
+        <ProfilePage logout={this.logout}/>
       </div>
     );
   }

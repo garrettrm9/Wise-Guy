@@ -26,7 +26,7 @@ class Jokes extends Component {
 
   sendEditedJoke(e){
     e.preventDefault()
-    console.log("joke sendEditedJoke", this.state.jokes)
+    // console.log("joke sendEditedJoke", this.state.jokes)
     this.props.editJoke(this.state, this.props.joke.id)
     this.setState({isEditing: false})
   }

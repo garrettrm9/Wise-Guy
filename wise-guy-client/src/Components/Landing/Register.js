@@ -34,12 +34,13 @@ import React, { Component } from "react";
       return(
         <div className="registration_container">
          <form onSubmit={this.registerUser}>
-            <label>Register </label>
-              <input onChange={this.changeHandler} type='text' placeholder='First name' name='first_name' value={this.state.first_name}/>
-              <input onChange={this.changeHandler} type='text' placeholder='Last name' name='last_name' value={this.state.last_name}/>
-              <input onChange={this.changeHandler} type='text' placeholder='Email' name='email' value={this.state.email}/>
-              <input onChange={this.changeHandler} type='text' placeholder='Password' name='password' value={this.state.password}/>
-            <button>Submit registration</button>
+            <h1>Give me all your DELICIOUS data</h1>
+              <label>Register </label>
+                <input onChange={this.changeHandler} type='text' placeholder='First name' name='first_name' value={this.state.first_name}/>
+                <input onChange={this.changeHandler} type='text' placeholder='Last name' name='last_name' value={this.state.last_name}/>
+                <input onChange={this.changeHandler} type='text' placeholder='Email' name='email' value={this.state.email}/>
+                <input onChange={this.changeHandler} type='text' placeholder='Password' name='password' value={this.state.password}/>
+              <button>Submit registration</button>
           </form>
         </div>
       )
