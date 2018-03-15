@@ -23,6 +23,8 @@ class App extends Component {
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
     this.checkLogin = this.checkLogin.bind(this)
+    // this.setJokesStateWithUserId = this.setJokesStateWithUserId.bind(this)
+    // this.setRoutinesStateWithUserId = this.setRoutinesStateWithUserId.bind(this)
   }
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
@@ -89,7 +91,7 @@ class App extends Component {
   // !!Get all jokes with user_id!!
   getJokes(id) {
     axios({ 
-      url: `http://localhost:3000/jokes/${id}users/`,
+      url: `http://localhost:3000/users/${id}/jokes/`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       }        
@@ -101,16 +103,17 @@ class App extends Component {
   }
   // !!Post new Routine without user-id!!
   addJoke(newJoke){
-    // console.log("app addJoke", newJoke)
+    console.log("app addJoke", newJoke)
+    console.log("app addJoke", this.state.user.id)
     axios({
-      url: "http://localhost:3000/jokes",
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },       
       data: newJoke
     }).then(response => {
-      this.getJokes()
+      this.getJokes(this.state.user.id)
     })
   }
   // !!Delete Joke!!
@@ -160,9 +163,6 @@ class App extends Component {
     .catch(err => console.log(`err: ${err}`));
   }
 
-  // same as above except route is login
-  // as above, we are saving the token locally using
-  // the TokenService
   login(data) {
     // console.log("app login", data)
     axios('http://localhost:3000/users/login', {
@@ -179,8 +179,6 @@ class App extends Component {
     .catch(err => console.log(`err: ${err}`));
   }
 
-
-  // just delete the token
   logout(ev) {
     ev.preventDefault();
     TokenService.destroy();
