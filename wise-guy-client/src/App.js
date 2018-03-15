@@ -46,16 +46,17 @@ class App extends Component {
   addRoutine(newRoutine){
     // console.log("app addRoutine:", newRoutine)
     axios({
-      url: "http://localhost:3000/routines",
+      url: `http://localhost:3000/users/${this.state.user.id}/routines`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       },       
       data: newRoutine
     }).then(response => {
-      this.getRoutines()
+      this.getRoutines(this.state.user.id)
     })
   }
+
   // !!Delete Routine!!
   deleteRoutine(id) {
     axios({

@@ -22,6 +22,8 @@ class RoutinesList extends Component {
     )
   }
 
+  //grabs changes in form below, stores in routines state, also grabs user_id from props
+  //and adds to routines state, fulfilling all params for POST request
   changeHandler(e){
     // console.log("Routine changeHandler", his.state)
     e.preventDefault()
@@ -29,6 +31,7 @@ class RoutinesList extends Component {
     const value = e.target.value
     this.setState(prevState => {
       prevState.routines[key] = value
+      prevState.routines.user_id = this.props.user.id
       return prevState
     })
   }
