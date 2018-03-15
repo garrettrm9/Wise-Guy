@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'isLoggedIn', :to => 'users#is_logged_in'
   post 'users/login', :to => 'users#login'
   resources :jokes
-  resources :routines
+  resources :routines, :except => ['show']
+  get 'users/:id/routines' => 'routines#show'
   resources :routine_with_jokes
 end
