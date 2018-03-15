@@ -40,7 +40,7 @@ class RoutinesList extends Component {
   }
 
   componentDidMount() {
-    this.props.getRoutines(this.props.user.id);
+    // this.props.getRoutines(this.props.user.id);
     console.log("RoutinesList didmount", this.props.user)
     // this.setState({routines: {user_id: this.props.user.id}})    
   }

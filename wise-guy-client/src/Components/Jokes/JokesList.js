@@ -39,9 +39,9 @@ class JokesList extends Component {
     this.props.addJoke(this.state)
   }
 
-  componentDidMount() {
-    this.props.getJokes(this.props.user.id);
-  }
+  // componentDidMount() {
+  //   this.props.getJokes(this.props.user.id);
+  // }
 
   render() {
     const jokes = this.props.jokes.map(this.renderJokes);

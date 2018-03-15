@@ -30,7 +30,7 @@ class App extends Component {
   // !!Get all routines with user_id!!
   getRoutines(id) {
     axios({ 
-      url: `http://localhost:3000/routines/users/${id}`,
+      url: `http://localhost:3000/users/${id}/routines`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       } 
@@ -89,7 +89,7 @@ class App extends Component {
   // !!Get all jokes with user_id!!
   getJokes(id) {
     axios({ 
-      url: `http://localhost:3000/jokes/users/${id}`,
+      url: `http://localhost:3000/jokes/${id}users/`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`,
       }        
@@ -154,6 +154,8 @@ class App extends Component {
       // console.log("register", resp.data)
       this.setState({user: resp.data.user})
       // console.log("register", this.state.user)
+      this.getRoutines(this.state.user.id)
+      this.getJokes(this.state.user.id)            
     })
     .catch(err => console.log(`err: ${err}`));
   }
@@ -170,7 +172,9 @@ class App extends Component {
       TokenService.save(resp.data.token);
       // console.log("login", resp.data.user)
       this.setState({user: resp.data.user})
-      // console.log("login", this.state.user)      
+      // console.log("login", this.state.user)
+      this.getRoutines(this.state.user.id) 
+      this.getJokes(this.state.user.id)                       
     })
     .catch(err => console.log(`err: ${err}`));
   }
