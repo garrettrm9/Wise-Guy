@@ -1,47 +1,45 @@
 import React, { Component } from "react";
 
 class Jokes extends Component {
-
-  constructor(props){
-    super(props)
-    this.state = {isEditing: false, jokes: {}}
-    this.deleteHandler = this.deleteHandler.bind(this)
-    this.editFormHandler = this.editFormHandler.bind(this)
-    this.changeHandler = this.changeHandler.bind(this)
-    this.sendEditedJoke = this.sendEditedJoke.bind(this)
+  constructor(props) {
+    super(props);
+    this.state = { isEditing: false, jokes: {} };
+    this.deleteHandler = this.deleteHandler.bind(this);
+    this.editFormHandler = this.editFormHandler.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
+    this.sendEditedJoke = this.sendEditedJoke.bind(this);
   }
 
-  deleteHandler(e){
-    e.preventDefault()
-    this.props.deleteJoke(this.props.joke.id)
+  deleteHandler(e) {
+    e.preventDefault();
+    this.props.deleteJoke(this.props.joke.id);
   }
 
-  editFormHandler(e){
-    e.preventDefault()
+  editFormHandler(e) {
+    e.preventDefault();
     this.setState(prevState => {
-      prevState.isEditing = !prevState.isEditing
-      return prevState
-    })
+      prevState.isEditing = !prevState.isEditing;
+      return prevState;
+    });
   }
 
-  sendEditedJoke(e){
-    e.preventDefault()
+  sendEditedJoke(e) {
+    e.preventDefault();
     // console.log("joke sendEditedJoke", this.state.jokes)
-    this.props.editJoke(this.state, this.props.joke.id)
-    this.setState({isEditing: false})
+    this.props.editJoke(this.state, this.props.joke.id);
+    this.setState({ isEditing: false });
   }
 
-  changeHandler(e){
-    e.preventDefault()
-    const key = e.target.name
-    const value = e.target.value
+  changeHandler(e) {
+    e.preventDefault();
+    const key = e.target.name;
+    const value = e.target.value;
     this.setState(prevState => {
-      prevState.jokes[key] = value
-      return prevState
-    })
+      prevState.jokes[key] = value;
+      return prevState;
+    });
     // console.log("routine editHandler", this.state)
   }
-
 
   render() {
     const joke = this.props.joke;
@@ -49,20 +47,40 @@ class Jokes extends Component {
     const user_id = joke.user_id;
     const name = joke.name;
     const joke_text = joke.joke_text;
-    const estimated_length = joke.estimated_length
+    const estimated_length = joke.estimated_length;
     if (this.state.isEditing) {
       return (
         <div className="joke_form">
           <form onSubmit={this.sendEditedJoke}>
             <label>Edit this joke</label>
-            <input onChange={this.changeHandler} type='text' placeholder='Joke name' name='name' value={this.state.jokes.name}/>
-            <input onChange={this.changeHandler} type='text' placeholder='Joke text' name='joke_text' value={this.state.jokes.joke_text}/>
-            <input onChange={this.changeHandler} type='text' placeholder='Estimated length' name='estimated_length' value={this.state.jokes.estimated_length}/>
-            <button onClick={this.editFormHandler}>Never mind, screw that edit</button>
-            <button>Submit edited joke</button>    
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Joke name"
+              name="name"
+              value={this.state.jokes.name}
+            />
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Joke text"
+              name="joke_text"
+              value={this.state.jokes.joke_text}
+            />
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Estimated length"
+              name="estimated_length"
+              value={this.state.jokes.estimated_length}
+            />
+            <button onClick={this.editFormHandler}>
+              Never mind, screw that edit
+            </button>
+            <button>Submit edited joke</button>
           </form>
         </div>
-      )
+      );
     }
     return (
       <ul key={id.toString()}>
@@ -70,7 +88,7 @@ class Jokes extends Component {
         <li>Joke id: {id}</li>
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
-        <li>Estimated length: {estimated_length}</li>     
+        <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete joke</button>
         <button onClick={this.editFormHandler}>Edit joke</button>
       </ul>

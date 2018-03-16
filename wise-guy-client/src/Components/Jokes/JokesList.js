@@ -11,16 +11,16 @@ class JokesList extends Component {
   renderJokes(joke, index) {
     // console.log("renderJokes:",index)
     return (
-      <Jokes 
+      <Jokes
         joke={joke}
         index={index}
         deleteJoke={this.props.deleteJoke}
         editJoke={this.props.editJoke}
       />
-    )
+    );
   }
   // giveUserIdToJokesState(){
-  //   // this.setState({jokes: {user_id: this.props.user.id}})   
+  //   // this.setState({jokes: {user_id: this.props.user.id}})
   //   console.log("giveUserIdToJokesState", this.state)
   // }
 

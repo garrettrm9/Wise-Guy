@@ -16,11 +16,11 @@ class RoutinesList extends Component {
         deleteRoutine={this.props.deleteRoutine}
         editRoutine={this.props.editRoutine}
       />
-    )
+    );
   }
   // componentDidMount() {
   //   this.props.getRoutines(this.props.user.id);
-  //   this.setState({routines: {user_id: this.props.user.id}})    
+  //   this.setState({routines: {user_id: this.props.user.id}})
   // }
 
   render() {
@@ -30,8 +30,8 @@ class RoutinesList extends Component {
       <div className="routines_container">
         <h2>Hello from RoutinesList!!!</h2>
         <div className="routines_list">{routines}</div>
-      </div>  
-    )
+      </div>
+    );
   }
 }
 

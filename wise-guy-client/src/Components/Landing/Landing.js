@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import {Link} from 'react-router-dom'
-// import Register from "./Register";
+import { Link } from "react-router-dom";
 import SignUp from "./SignUp";
 
 class Landing extends Component {
@@ -8,8 +7,10 @@ class Landing extends Component {
     return (
       <div className="landing_container">
         <h1>Way to stick the LANDING</h1>
-        <br/>       
-        <button>Register</button>
+        <br />
+        <Link to={"/register"}>
+          <button>Register</button>
+        </Link>
         <br />
         <SignUp login={this.props.login} />
       </div>
@@ -18,8 +19,3 @@ class Landing extends Component {
 }
 
 export default Landing;
-
-/*!!Needs link!!!!*/
-
-// <Link to="/register">
-// </Link>

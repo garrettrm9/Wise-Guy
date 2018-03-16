@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 // import Nav from '../Profile/Nav'
-import RoutinesList from './RoutinesList'
-import RoutinesForm from './RoutinesForm'
+import RoutinesList from "./RoutinesList";
+import RoutinesForm from "./RoutinesForm";
 
 class RoutinesPage extends Component {
-
-  render(){
-    return(
-      <div>    
+  render() {
+    return (
+      <div>
         <h2>Greetings from RoutinesPage</h2>
         <RoutinesList
           deleteRoutine={this.props.deleteRoutine}
@@ -15,15 +14,14 @@ class RoutinesPage extends Component {
           routines={this.props.routines}
         />
         <RoutinesForm
-          addRoutine={this.props.addRoutine}          
+          addRoutine={this.props.addRoutine}
           user={this.props.user}
         />
-      </div>  
-    )
+      </div>
+    );
   }
-
 }
 
-export default RoutinesPage
+export default RoutinesPage;
 
-        // <Nav/>
+// <Nav/>
