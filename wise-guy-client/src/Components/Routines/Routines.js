@@ -44,7 +44,6 @@ class Routines extends Component {
   render() {
     const routine = this.props.routine;
     const id = routine.id;
-    const user_id = routine.user_id;
     const name = routine.name;
     const estimated_length = routine.estimated_length;
     if (this.state.isEditing) {
@@ -76,8 +75,6 @@ class Routines extends Component {
     }
     return (
       <ul key={id.toString()}>
-        <li>User_id: {user_id}</li>
-        <li>Routine id: {id}</li>
         <li>Routine name: {name}</li>
         <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete routine</button>

@@ -34,7 +34,6 @@ class JokesForm extends Component {
   render() {
     return (
       <div className="jokes_form">
-        <h3>Greetings from JokesForm!!</h3>
         <form onSubmit={this.submitJoke}>
           <label>Add a joke! </label>
           <input

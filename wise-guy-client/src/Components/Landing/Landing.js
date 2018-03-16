@@ -6,7 +6,8 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing_container">
-        <h1>Way to stick the LANDING</h1>
+        <h1>Wise Guy</h1>
+        <h2>The smart way to be a funny person</h2>
         <br />
         <Link to={"/register"}>
           <button>Register</button>

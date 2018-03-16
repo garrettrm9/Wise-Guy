@@ -233,7 +233,7 @@ class App extends Component {
     if (this.state.isLoggedIn === true) {
       return (
         <div className="App">
-          <Nav logout={this.logout} />
+          <Nav logout={this.logout} user={this.state.user} />
           <Router>
             <Switch>
               <Route
@@ -247,7 +247,9 @@ class App extends Component {
               <Route
                 exact
                 path="/profile"
-                render={props => <ProfilePage {...props} />}
+                render={props => (
+                  <ProfilePage {...props} user={this.state.user} />
+                )}
               />
               <Route
                 path="/routines"
@@ -275,7 +277,6 @@ class App extends Component {
                   />
                 )}
               />
-              }
             </Switch>
           </Router>
         </div>

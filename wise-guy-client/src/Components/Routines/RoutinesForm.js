@@ -31,7 +31,6 @@ class RoutinesForm extends Component {
   render() {
     return (
       <div className="routines_form">
-        <h3>Greetings from RoutinesForm</h3>
         <form onSubmit={this.submitRoutine}>
           <label>Add a routine! </label>
           <input

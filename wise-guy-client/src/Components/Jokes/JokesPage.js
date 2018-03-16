@@ -5,9 +5,10 @@ import JokesForm from "./JokesForm";
 
 class JokesPage extends Component {
   render() {
+    const firstName = this.props.user.first_name;
     return (
       <div>
-        <h2>Greetings from JokesPage</h2>
+        <h2 className="header">{firstName}'s jokes</h2>
         <JokesList
           deleteJoke={this.props.deleteJoke}
           editJoke={this.props.editJoke}

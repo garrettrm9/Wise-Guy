@@ -5,9 +5,10 @@ import RoutinesForm from "./RoutinesForm";
 
 class RoutinesPage extends Component {
   render() {
+    const firstName = this.props.user.first_name;
     return (
       <div>
-        <h2>Greetings from RoutinesPage</h2>
+        <h2 className="header">{firstName}'s routines</h2>
         <RoutinesList
           deleteRoutine={this.props.deleteRoutine}
           editRoutine={this.props.editRoutine}

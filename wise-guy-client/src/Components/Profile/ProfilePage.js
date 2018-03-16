@@ -4,9 +4,14 @@ import RoutinesPrev from "./RoutinesPrev";
 
 class ProfilePage extends Component {
   render() {
+    const user = this.props.user;
+    const firstName = user.first_name;
+    const lastName = user.last_name;
     return (
       <div>
-        <h1>Welcome to profile page!</h1>
+        <h1 className="header">
+          Welcome to your profile page, {firstName} {lastName} !
+        </h1>
         <JokesPrev />
         <RoutinesPrev />
       </div>
@@ -15,5 +20,3 @@ class ProfilePage extends Component {
 }
 
 export default ProfilePage;
-
-/*!!Needs link!!!!*/

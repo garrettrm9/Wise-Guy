@@ -28,7 +28,6 @@ class RoutinesList extends Component {
     const routines = this.props.routines.map(this.renderRoutines);
     return (
       <div className="routines_container">
-        <h2>Hello from RoutinesList!!!</h2>
         <div className="routines_list">{routines}</div>
       </div>
     );

@@ -33,7 +33,7 @@ class Register extends Component {
     return (
       <div className="registration_container">
         <form onSubmit={this.registerUser}>
-          <h1>Give me all your DELICIOUS data</h1>
+          <h1 className="header">Join the movement (please?)</h1>
           <label>Register </label>
           <input
             onChange={this.changeHandler}
