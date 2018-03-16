@@ -7,6 +7,8 @@ class ProfilePage extends Component {
     const user = this.props.user;
     const firstName = user.first_name;
     const lastName = user.last_name;
+    // const oneLinerJoke = require("one-liner-joke");
+    // const getRandomJoke = oneLinerJoke.getRandomJoke();
     return (
       <div>
         <h1 className="header">
