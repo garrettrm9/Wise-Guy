@@ -1,15 +1,13 @@
 class RoutinesController < ApplicationController
   def index
-    routines = Routine.all
+    current_user = User.find(params[:id])
+    routines = current_user.routines
     render json: routines
   end 
 
   def show
-    # routine = Routine.find(params[:id])
-    # render json: routine
-    current_user = User.find(params[:id])
-    routines = current_user.routines
-    render json: routines
+    current_routine = Routine.find(params[:number])
+    render json: current_routine
   end
 
   def create
