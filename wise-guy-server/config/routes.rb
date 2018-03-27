@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   post 'users/:id/jokes' => 'jokes#create'
   delete 'users/:id/jokes/:id' => 'jokes#destroy'
   put 'users/:id/jokes/:id' => 'jokes#update'
-  resources :routines, :except => ['show', 'post', 'delete', 'put']
-  get 'users/:id/routines' => 'routines#show'
+  resources :routines, :except => ['index', 'show', 'post', 'delete', 'put']
+  get 'users/:id/routines' => 'routines#index'
+  get 'users/:id/routines/:number' => 'routines#show'
   post 'users/:id/routines' => 'routines#create'  
   delete 'users/:id/routines/:id' => 'routines#destroy'
   put 'users/:id/routines/:id' => 'routines#update'
