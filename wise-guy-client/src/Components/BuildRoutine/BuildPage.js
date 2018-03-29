@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import BuildJokesList from "../BuildRoutine/BuildJokesList";
+import BuildJokesList from "./BuildJokesList";
 import JokesForm from "../Jokes/JokesForm";
+import RoutineJokesList from "./RoutineJokesList";
 
 class BuildPage extends Component {
   render() {
@@ -11,6 +12,11 @@ class BuildPage extends Component {
     return (
       <div>
         <h2 className="">This is the routine!</h2>
+        <RoutineJokesList
+          getRoutineJokes={this.props.getRoutineJokes}
+          addJokeToRoutine={this.props.addJokeToRoutine}
+          deleteRoutineJoke={this.props.deleteRoutineJoke}
+        />
         <BuildJokesList
           deleteJoke={this.props.deleteJoke}
           editJoke={this.props.editJoke}
