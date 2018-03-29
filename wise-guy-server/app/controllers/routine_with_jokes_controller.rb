@@ -5,15 +5,15 @@ class RoutineWithJokesController < ApplicationController
   # end 
 
   def show
-    # routineWithJoke = RoutineWithJoke.find(params[:id])
-    # render json: routineWithJoke
     routineId = Routine.find(params[:id])
     routine = routineId.jokes
     render json: routine
   end
 
   def create
-    routineWithJoke = RoutineWithJoke.create!(routineWithJoke_params)
+    routineId = params[:routine_id]
+    jokeId = params[:joke_id]
+    routineWithJoke = RoutineWithJoke.create!(routine_id: routineId, joke_id: jokeId)
     render json: routineWithJoke
   end
 
