@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   post 'users/:id/routines' => 'routines#create'  
   delete 'users/:id/routines/:id' => 'routines#destroy'
   put 'users/:id/routines/:id' => 'routines#update'
-  resources :routine_with_jokes, :except => ['index', 'show', 'post']
+  resources :routine_with_jokes, :except => ['index', 'show', 'post', 'put', 'delete']
   get 'routines/:id' => 'routine_with_jokes#show'
   post 'routines/:routine_id/jokes/:joke_id' => 'routine_with_jokes#create'
+  delete 'routines/:routine_id/jokes/:joke_id' => 'routine_with_jokes#destroy'
 end
