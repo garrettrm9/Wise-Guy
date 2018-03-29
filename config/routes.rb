@@ -10,12 +10,13 @@ Rails.application.routes.draw do
   put 'users/:id/jokes/:id' => 'jokes#update'
   resources :routines, :except => ['index', 'show', 'post', 'delete', 'put']
   get 'users/:id/routines' => 'routines#index'
-  get 'users/:id/routines/:number' => 'routines#show'
+  # get 'users/:id/routines/:number' => 'routines#show'
   post 'users/:id/routines' => 'routines#create'  
   delete 'users/:id/routines/:id' => 'routines#destroy'
   put 'users/:id/routines/:id' => 'routines#update'
   resources :routine_with_jokes, :except => ['index', 'show', 'post', 'put', 'delete']
-  get 'routines/:id' => 'routine_with_jokes#show'
+  get 'routines/:id' => 'routine_with_jokes#index'
+  get 'routines/:id/build' => 'routine_with_jokes#show'
   post 'routines/:routine_id/jokes/:joke_id' => 'routine_with_jokes#create'
   delete 'routines/:routine_id/jokes/:joke_id' => 'routine_with_jokes#destroy'
 end
