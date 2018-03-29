@@ -251,6 +251,19 @@ class App extends Component {
                 )}
               />
               <Route
+                path="/routines/:id/build"
+                render={props => (
+                  <BuildPage
+                    {...props}
+                    addJoke={this.addJoke}
+                    deleteJoke={this.deleteJoke}
+                    editJoke={this.editJoke}
+                    jokes={this.state.jokes}
+                    user={this.state.user}
+                  />
+                )}
+              />
+              <Route
                 path="/routines"
                 render={props => (
                   <RoutinesPage
@@ -259,19 +272,6 @@ class App extends Component {
                     deleteRoutine={this.deleteRoutine}
                     editRoutine={this.editRoutine}
                     routines={this.state.routines}
-                    user={this.state.user}
-                  />
-                )}
-              />
-              <Route
-                path="/build"
-                render={props => (
-                  <BuildPage
-                    {...props}
-                    addJoke={this.addJoke}
-                    deleteJoke={this.deleteJoke}
-                    editJoke={this.editJoke}
-                    jokes={this.state.jokes}
                     user={this.state.user}
                   />
                 )}
