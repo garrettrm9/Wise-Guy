@@ -4,23 +4,32 @@ import JokesForm from "../Jokes/JokesForm";
 import RoutineJokesList from "./RoutineJokesList";
 
 class BuildPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { routines: {}, id: this.props.match.params.id };
+  }
+
+  componentDidMount() {
+    this.props.getOneRoutine(this.state.id);
+    this.props.getRoutineJokes(this.state.id);
+  }
+
   render() {
-    // const routine = this.props.routine;
-    // const id = routine.id;
-    // const name = routine.name;
-    // const estimated_length = routine.estimated_length;
+    const name = this.props.oneRoutine.name;
     return (
       <div>
-        <h2 className="">This is the routine!</h2>
+        <h1 className="header">This routine is called {name}!</h1>
         <RoutineJokesList
-          getRoutineJokes={this.props.getRoutineJokes}
-          addJokeToRoutine={this.props.addJokeToRoutine}
           deleteRoutineJoke={this.props.deleteRoutineJoke}
+          oneRoutine={this.props.oneRoutine}
+          routineJokes={this.props.routineJokes}
         />
         <BuildJokesList
+          addJokeToRoutine={this.props.addJokeToRoutine}
           deleteJoke={this.props.deleteJoke}
           editJoke={this.props.editJoke}
           jokes={this.props.jokes}
+          oneRoutine={this.props.oneRoutine}
         />
         <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
       </div>

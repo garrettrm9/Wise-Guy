@@ -8,6 +8,12 @@ class BuildJokes extends Component {
     this.editFormHandler = this.editFormHandler.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
     this.sendEditedJoke = this.sendEditedJoke.bind(this);
+    this.addJokeHandler = this.addJokeHandler.bind(this);
+  }
+
+  addJokeHandler(e) {
+    e.preventDefault();
+    this.props.addJokeToRoutine();
   }
 
   deleteHandler(e) {
@@ -89,7 +95,7 @@ class BuildJokes extends Component {
         <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete joke</button>
         <button onClick={this.editFormHandler}>Edit joke</button>
-        <button>Add to the routine</button>
+        <button onClick={this.addJokeHandler}>Add to the routine</button>
         {maybeFormOpen}
       </ul>
     );

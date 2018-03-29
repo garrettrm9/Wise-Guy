@@ -14,6 +14,7 @@ class BuildJokesList extends Component {
         index={index}
         deleteJoke={this.props.deleteJoke}
         editJoke={this.props.editJoke}
+        addJokeToRoutine={this.props.addJokeToRoutine}
       />
     );
   }

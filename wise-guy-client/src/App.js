@@ -20,12 +20,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      oneRoutine: [],
       routines: [],
       jokes: [],
       routineJokes: [],
       user: {},
       isLoggedIn: false
     };
+    this.getOneRoutine = this.getOneRoutine.bind(this);
     this.getRoutines = this.getRoutines.bind(this);
     this.addRoutine = this.addRoutine.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
@@ -34,12 +36,12 @@ class App extends Component {
     this.addJoke = this.addJoke.bind(this);
     this.deleteJoke = this.deleteJoke.bind(this);
     this.editJoke = this.editJoke.bind(this);
-    this.register = this.register.bind(this);
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
     this.getRoutineJokes = this.getRoutineJokes.bind(this);
     this.addJokeToRoutine = this.addJokeToRoutine.bind(this);
     this.deleteRoutineJoke = this.deleteRoutineJoke.bind(this);
+    this.register = this.register.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
@@ -51,9 +53,10 @@ class App extends Component {
   //   axios({
   //     url: `https://wise-guy.herokuapp.com/users/${id}/routines`,
 
-  getRoutines(id) {
+  //!!Render all Routines based on user_id in argument!!
+  getRoutines(userId) {
     axios({
-      url: `http://localhost:3000/users/${id}/routines`,
+      url: `http://localhost:3000/users/${userId}/routines`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -65,7 +68,22 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Post new Routine without user-id!!
+  //!!Render JUST ONE SINGLE Routine based on routine_id in argument!!
+  getOneRoutine(routineId) {
+    axios({
+      url: `http://localhost:3000/routines/${routineId}/build`,
+      headers: {
+        Authorization: `Bearer ${TokenService.read()}`
+      }
+    })
+      .then(response => {
+        // console.log("getOneRoutine:", response.data);
+        this.setState({ oneRoutine: response.data });
+        // console.log("state, oneRoutine:", this.state.oneRoutine);
+      })
+      .catch(err => console.log(`err: ${err}`));
+  }
+  // !!Post new Routine with user_id from state and newRoutine data as argument!!
   addRoutine(newRoutine) {
     // console.log("app addRoutine:", newRoutine)
     axios({
@@ -82,10 +100,12 @@ class App extends Component {
       .catch(err => console.log(`err: ${err}`));
   }
 
-  // !!Delete Routine!!
-  deleteRoutine(id) {
+  // !!Delete Routine based on routine_id, getting user_id from state!!
+  deleteRoutine(routineId) {
     axios({
-      url: `http://localhost:3000/users/${this.state.user.id}/routines/${id}`,
+      url: `http://localhost:3000/users/${
+        this.state.user.id
+      }/routines/${routineId}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -97,7 +117,7 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Edit Routine!!
+  // !!Edit Routine based on routine_id in argument, edited body from routine argument, and user_id from state!!
   editRoutine(routine, routineId) {
     // console.log("app editRoutine", routine)
     // console.log("editRoutine routineId", routineId)
@@ -120,10 +140,10 @@ class App extends Component {
 
   // !!JOKES, JOKES, JOKES!!
 
-  // !!Get all jokes with user_id!!
-  getJokes(id) {
+  // !!Get all jokes with user_id as an argument!!
+  getJokes(userId) {
     axios({
-      url: `http://localhost:3000/users/${id}/jokes/`,
+      url: `http://localhost:3000/users/${userId}/jokes/`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -135,7 +155,7 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Post new Routine without user-id!!
+  // !!Post new Routine with user-id from state, new joke data from newJoke argument!!
   addJoke(newJoke) {
     // console.log("app addJoke", newJoke)
     // console.log("app addJoke", this.state.user.id)
@@ -152,10 +172,10 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Delete Joke!!
-  deleteJoke(id) {
+  // !!Delete Joke based on joke_id from argument, user_id from state!!
+  deleteJoke(jokeId) {
     axios({
-      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${id}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${jokeId}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -167,7 +187,7 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Edit Joke!!
+  // !!Edit Joke based on joke form data and jokeId arguments, user_id from state!!
   editJoke(joke, jokeId) {
     // console.log("app editJoke", joke)
     // console.log("editJoke jokeId", jokeId)
@@ -188,7 +208,8 @@ class App extends Component {
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
 
-  // !!Renders all jokes linked to a specific routine (on BuildRoutine)!!
+  // !!Renders all jokes linked to a specific routine via routine_id as argument
+  // (found on BuildRoutine component)!!
   getRoutineJokes(id) {
     axios({
       url: `http:localhost:3000/routines/${id}`,
@@ -312,6 +333,9 @@ class App extends Component {
                     editJoke={this.editJoke}
                     jokes={this.state.jokes}
                     user={this.state.user}
+                    routineJokes={this.state.routineJokes}
+                    oneRoutine={this.state.oneRoutine}
+                    getOneRoutine={this.getOneRoutine}
                     getRoutineJokes={this.getRoutineJokes}
                     addJokeToRoutine={this.addJokeToRoutine}
                     deleteRoutineJoke={this.deleteRoutineJoke}

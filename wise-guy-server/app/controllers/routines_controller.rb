@@ -5,10 +5,10 @@ class RoutinesController < ApplicationController
     render json: routines
   end 
 
-  def show
-    current_routine = Routine.find(params[:number])
-    render json: current_routine
-  end
+  # def show
+  #   current_routine = Routine.find(params[:number])
+  #   render json: current_routine
+  # end
 
   def create
     routine = Routine.create!(routine_params)

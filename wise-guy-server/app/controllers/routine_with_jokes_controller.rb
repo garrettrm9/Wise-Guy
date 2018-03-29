@@ -1,11 +1,16 @@
 class RoutineWithJokesController < ApplicationController
 
 # !!!renders all of a routine's jokes!!!
-  def show
+  def index
     routineId = Routine.find(params[:id])
     routine = routineId.jokes
     render json: routine
   end
+
+  def show
+    current_routine = Routine.find(params[:id])
+    render json: current_routine
+  end  
 
   def create
     routineId = params[:routine_id]
