@@ -2,9 +2,9 @@ class RoutineWithJokesController < ApplicationController
 
 # !!!renders all of a routine's jokes!!!
   def index
-    routineId = Routine.find(params[:id])
-    routine = routineId.jokes
-    render json: routine
+    routine = Routine.find(params[:id])
+    jokes = routine.jokes
+    render json: jokes
   end
 
   def show

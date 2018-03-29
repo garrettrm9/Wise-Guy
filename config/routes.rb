@@ -3,20 +3,20 @@ Rails.application.routes.draw do
   resources :users
   get 'isLoggedIn', :to => 'users#is_logged_in'
   post 'users/login', :to => 'users#login'
-  resources :jokes, :except => ['show', 'post', 'delete', 'put']
+  # resources :jokes, :except => ['show', 'post', 'delete', 'put']
   get 'users/:id/jokes' => 'jokes#show'
   post 'users/:id/jokes' => 'jokes#create'
   delete 'users/:id/jokes/:id' => 'jokes#destroy'
   put 'users/:id/jokes/:id' => 'jokes#update'
-  resources :routines, :except => ['index', 'show', 'post', 'delete', 'put']
+  # resources :routines, :except => ['index', 'show', 'post', 'delete', 'put']
   get 'users/:id/routines' => 'routines#index'
   # get 'users/:id/routines/:number' => 'routines#show'
   post 'users/:id/routines' => 'routines#create'  
   delete 'users/:id/routines/:id' => 'routines#destroy'
   put 'users/:id/routines/:id' => 'routines#update'
-  resources :routine_with_jokes, :except => ['index', 'show', 'post', 'put', 'delete']
-  get 'routines/:id' => 'routine_with_jokes#index'
-  get 'routines/:id/build' => 'routine_with_jokes#show'
-  post 'routines/:routine_id/jokes/:joke_id' => 'routine_with_jokes#create'
-  delete 'routines/:routine_id/jokes/:joke_id' => 'routine_with_jokes#destroy'
+  # resources :routine_with_jokes, :except => ['index', 'show', 'post', 'put', 'delete']
+  get 'routines_with_jokes/:id' => 'routine_with_jokes#index'
+  get 'routines_with_jokes/:id/build' => 'routine_with_jokes#show'
+  post 'routines_with_jokes/:routine_id/jokes/:joke_id' => 'routine_with_jokes#create'
+  delete 'routines_with_jokes/:routine_id/jokes/:joke_id' => 'routine_with_jokes#destroy'
 end
