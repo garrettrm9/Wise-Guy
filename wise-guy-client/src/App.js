@@ -264,9 +264,9 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/jokes"
+                path="/build"
                 render={props => (
-                  <JokesPage
+                  <BuildPage
                     {...props}
                     addJoke={this.addJoke}
                     deleteJoke={this.deleteJoke}
@@ -277,9 +277,9 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/build"
+                path="/jokes"
                 render={props => (
-                  <BuildPage
+                  <JokesPage
                     {...props}
                     addJoke={this.addJoke}
                     deleteJoke={this.deleteJoke}
