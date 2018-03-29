@@ -37,9 +37,14 @@ class App extends Component {
 
   // !!Get all routines with user_id!!
 
+  //              !!heroku db example!!!
+  // getRoutines(id) {
+  //   axios({
+  //     url: `https://wise-guy.herokuapp.com/users/${id}/routines`,
+
   getRoutines(id) {
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${id}/routines`,
+      url: `http://localhost:3000/users/${id}/routines`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -55,9 +60,7 @@ class App extends Component {
   addRoutine(newRoutine) {
     // console.log("app addRoutine:", newRoutine)
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${
-        this.state.user.id
-      }/routines`,
+      url: `http://localhost:3000/users/${this.state.user.id}/routines`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -73,9 +76,7 @@ class App extends Component {
   // !!Delete Routine!!
   deleteRoutine(id) {
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${
-        this.state.user.id
-      }/routines/${id}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/routines/${id}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -92,7 +93,7 @@ class App extends Component {
     // console.log("app editRoutine", routine)
     // console.log("editRoutine routineId", routineId)
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${
+      url: `http://localhost:3000/users/${
         this.state.user.id
       }/routines/${routineId}`,
       method: "PUT",
@@ -113,7 +114,7 @@ class App extends Component {
   // !!Get all jokes with user_id!!
   getJokes(id) {
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${id}/jokes/`,
+      url: `http://localhost:3000/users/${id}/jokes/`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -130,7 +131,7 @@ class App extends Component {
     // console.log("app addJoke", newJoke)
     // console.log("app addJoke", this.state.user.id)
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${this.state.user.id}/jokes`,
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -145,9 +146,7 @@ class App extends Component {
   // !!Delete Joke!!
   deleteJoke(id) {
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${
-        this.state.user.id
-      }/jokes/${id}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${id}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -164,9 +163,7 @@ class App extends Component {
     // console.log("app editJoke", joke)
     // console.log("editJoke jokeId", jokeId)
     axios({
-      url: `https://wise-guy.herokuapp.com/users/${
-        this.state.user.id
-      }/jokes/${jokeId}`,
+      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${jokeId}`,
       method: "PUT",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -183,7 +180,7 @@ class App extends Component {
 
   register(data) {
     // console.log("app register", data)
-    axios("https://wise-guy.herokuapp.com/users/", {
+    axios("http://localhost:3000/users/", {
       method: "POST",
       data
     })
@@ -203,7 +200,7 @@ class App extends Component {
 
   login(data) {
     // console.log("app login", data)
-    axios("https://wise-guy.herokuapp.com/users/login", {
+    axios("http://localhost:3000/users/login", {
       method: "POST",
       data
     })

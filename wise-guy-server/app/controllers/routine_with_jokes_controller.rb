@@ -1,12 +1,15 @@
 class RoutineWithJokesController < ApplicationController
-  def index
-    routineWithJokes = RoutineWithJoke.all
-    render json: routineWithJokes
-  end 
+  # def index
+  #   routineWithJokes = RoutineWithJoke.all
+  #   render json: routineWithJokes
+  # end 
 
   def show
-    routineWithJoke = RoutineWithJoke.find(params[:id])
-    render json: routineWithJoke
+    # routineWithJoke = RoutineWithJoke.find(params[:id])
+    # render json: routineWithJoke
+    routineId = Routine.find(params[:id])
+    routine = routineId.jokes
+    render json: routine
   end
 
   def create
