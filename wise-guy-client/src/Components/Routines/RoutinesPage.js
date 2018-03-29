@@ -8,7 +8,9 @@ class RoutinesPage extends Component {
     const firstName = this.props.user.first_name;
     return (
       <div>
-        <h2 className="header">{firstName}'s routines</h2>
+        <h2 className="header">
+          These perfect routines were written by {firstName}
+        </h2>
         <RoutinesList
           deleteRoutine={this.props.deleteRoutine}
           editRoutine={this.props.editRoutine}

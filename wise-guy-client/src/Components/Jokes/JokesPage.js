@@ -8,7 +8,9 @@ class JokesPage extends Component {
     const firstName = this.props.user.first_name;
     return (
       <div>
-        <h2 className="header">{firstName}'s jokes</h2>
+        <h2 className="header">
+          These ground-breaking jokes belong to {firstName}
+        </h2>
         <JokesList
           deleteJoke={this.props.deleteJoke}
           editJoke={this.props.editJoke}

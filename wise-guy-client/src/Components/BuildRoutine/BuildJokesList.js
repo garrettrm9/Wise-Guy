@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Jokes from "./Jokes";
+import BuildJokes from "./BuildJokes";
 
-class JokesList extends Component {
+class BuildJokesList extends Component {
   constructor(props) {
     super(props);
     this.renderJokes = this.renderJokes.bind(this);
@@ -9,7 +9,7 @@ class JokesList extends Component {
 
   renderJokes(joke, index) {
     return (
-      <Jokes
+      <BuildJokes
         joke={joke}
         index={index}
         deleteJoke={this.props.deleteJoke}
@@ -28,4 +28,4 @@ class JokesList extends Component {
   }
 }
 
-export default JokesList;
+export default BuildJokesList;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Routines extends Component {
   constructor(props) {
@@ -25,7 +26,6 @@ class Routines extends Component {
 
   sendEditedRoutine(e) {
     e.preventDefault();
-    // console.log("routine editHandler", this.state.routines)
     this.props.editRoutine(this.state, this.props.routine.id);
     this.setState({ isEditing: false });
   }
@@ -46,22 +46,23 @@ class Routines extends Component {
     const id = routine.id;
     const name = routine.name;
     const estimated_length = routine.estimated_length;
+    let maybeFormOpen = null;
     if (this.state.isEditing) {
-      return (
+      maybeFormOpen = (
         <div className="routine_form">
           <form onSubmit={this.sendEditedRoutine}>
             <label>Edit this routine</label>
             <input
               onChange={this.changeHandler}
               type="text"
-              placeholder="Routine name"
+              placeholder={name}
               name="name"
               value={this.state.routines.name}
             />
             <input
               onChange={this.changeHandler}
               type="text"
-              placeholder="Estimated length"
+              placeholder={estimated_length}
               name="estimated_length"
               value={this.state.routines.estimated_length}
             />
@@ -79,6 +80,10 @@ class Routines extends Component {
         <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete routine</button>
         <button onClick={this.editFormHandler}>Edit routine</button>
+        <Link to={"/build"}>
+          <button>Build routine</button>
+        </Link>
+        {maybeFormOpen}
       </ul>
     );
   }

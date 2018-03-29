@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Jokes extends Component {
+class BuildJokes extends Component {
   constructor(props) {
     super(props);
     this.state = { isEditing: false, jokes: {} };
@@ -89,10 +89,11 @@ class Jokes extends Component {
         <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete joke</button>
         <button onClick={this.editFormHandler}>Edit joke</button>
+        <button>Add to the routine</button>
         {maybeFormOpen}
       </ul>
     );
   }
 }
 
-export default Jokes;
+export default BuildJokes;

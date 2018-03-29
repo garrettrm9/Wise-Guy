@@ -8,7 +8,6 @@ class RoutinesList extends Component {
   }
 
   renderRoutines(routine, index) {
-    // console.log("renderRoutines:", index);
     return (
       <Routines
         routine={routine}
@@ -18,13 +17,8 @@ class RoutinesList extends Component {
       />
     );
   }
-  // componentDidMount() {
-  //   this.props.getRoutines(this.props.user.id);
-  //   this.setState({routines: {user_id: this.props.user.id}})
-  // }
 
   render() {
-    // console.log("RoutinesList render:", this.props.routines);
     const routines = this.props.routines.map(this.renderRoutines);
     return (
       <div className="routines_container">

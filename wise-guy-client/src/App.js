@@ -9,6 +9,7 @@ import "./App.css";
 import axios from "axios";
 import RoutinesPage from "./Components/Routines/RoutinesPage";
 import JokesPage from "./Components/Jokes/JokesPage";
+import BuildPage from "./Components/BuildRoutine/BuildPage";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import Landing from "./Components/Landing/Landing";
 import TokenService from "./services/TokenService";
@@ -30,8 +31,6 @@ class App extends Component {
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    // this.setJokesStateWithUserId = this.setJokesStateWithUserId.bind(this)
-    // this.setRoutinesStateWithUserId = this.setRoutinesStateWithUserId.bind(this)
   }
 
   // !!ROUTINES, ROUTINES, ROUTINES!!
@@ -228,14 +227,6 @@ class App extends Component {
     this.setState({ isLoggedIn: false });
     console.log("app logout: totally signed out");
   }
-  // checkLogin() {
-  //   axios('https://wise-guy.herokuapp.com/isLoggedIn', {
-  //     headers: {
-  //       Authorization: `Bearer ${TokenService.read()}`,
-  //     },
-  //   }).then(resp => console.log(resp))
-  //   .catch(err => console.log(err));
-  // }
 
   render() {
     if (this.state.isLoggedIn === true) {
@@ -276,6 +267,19 @@ class App extends Component {
                 path="/jokes"
                 render={props => (
                   <JokesPage
+                    {...props}
+                    addJoke={this.addJoke}
+                    deleteJoke={this.deleteJoke}
+                    editJoke={this.editJoke}
+                    jokes={this.state.jokes}
+                    user={this.state.user}
+                  />
+                )}
+              />
+              <Route
+                path="/build"
+                render={props => (
+                  <BuildPage
                     {...props}
                     addJoke={this.addJoke}
                     deleteJoke={this.deleteJoke}

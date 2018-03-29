@@ -41,7 +41,7 @@ class SignUp extends Component {
           />
           <input
             onChange={this.changeHandler}
-            type="text"
+            type="password"
             placeholder="Password"
             name="password"
             value={this.state.password}
