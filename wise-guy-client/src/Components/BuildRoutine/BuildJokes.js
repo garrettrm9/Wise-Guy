@@ -13,7 +13,7 @@ class BuildJokes extends Component {
 
   addJokeHandler(e) {
     e.preventDefault();
-    this.props.addJokeToRoutine();
+    this.props.addJokeToRoutine(this.props.oneRoutine.id, this.props.joke.id);
   }
 
   deleteHandler(e) {

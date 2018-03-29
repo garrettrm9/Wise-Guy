@@ -71,7 +71,7 @@ class App extends Component {
   //!!Render JUST ONE SINGLE Routine based on routine_id in argument!!
   getOneRoutine(routineId) {
     axios({
-      url: `http://localhost:3000/routines/${routineId}/build`,
+      url: `http://localhost:3000/routines_with_jokes/${routineId}/build`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -100,7 +100,7 @@ class App extends Component {
       .catch(err => console.log(`err: ${err}`));
   }
 
-  // !!Delete Routine based on routine_id, getting user_id from state!!
+  // !!Delete Routine based on routine_id as argument, getting user_id from state!!
   deleteRoutine(routineId) {
     axios({
       url: `http://localhost:3000/users/${
@@ -117,7 +117,8 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Edit Routine based on routine_id in argument, edited body from routine argument, and user_id from state!!
+  // !!Edit Routine based on routine_id in argument, edited body from routine argument,
+  // and user_id from state!!
   editRoutine(routine, routineId) {
     // console.log("app editRoutine", routine)
     // console.log("editRoutine routineId", routineId)
@@ -210,37 +211,39 @@ class App extends Component {
 
   // !!Renders all jokes linked to a specific routine via routine_id as argument
   // (found on BuildRoutine component)!!
-  getRoutineJokes(id) {
+  getRoutineJokes(routine_id) {
     axios({
-      url: `http:localhost:3000/routines/${id}`,
+      url: `http:localhost:3000/routines_with_jokes/${routine_id}`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
     })
       .then(response => {
         this.setState({ routineJokes: response.data });
+        console.log("getRoutineJokes", this.state.routineJokes);
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Adds a joke to the current routine (on BuildRoutinE)!!
-  addJokeToRoutine(newRoutineJoke, routine_id, joke_id) {
+  // !!Adds a joke to the current routine linked to a specific routine via routine_id
+  // and joke_id as arguments ((found on BuildRoutine component)!!
+  addJokeToRoutine(routine_id, joke_id) {
     axios({
-      url: `http:localhost:3000/routines/${routine_id}/jokes/${joke_id}`,
+      url: `http:localhost:3000/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
-      },
-      data: newRoutineJoke
+      }
     })
       .then(response => {
         // console.log("addJokeToRoutine", response.data)
       })
       .catch(err => console.log(`err: ${err}`));
   }
-  // !!Deletes a joke from a routine
+  // !!Deletes a specific joke from the current routine  via routine_id
+  // and joke_id as arguments ((found on BuildRoutine component)!!
   deleteRoutineJoke(routine_id, joke_id) {
     axios({
-      url: `http:localhost:3000/routines/${routine_id}/jokes/${joke_id}`,
+      url: `http:localhost:3000/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -309,22 +312,8 @@ class App extends Component {
           <Router>
             <Switch>
               <Route
-                path="/register"
-                render={() => <Redirect to="/profile" />}
-              />
-              <Route
-                path="/landing"
-                render={() => <Redirect to="/profile" />}
-              />
-              <Route
                 exact
-                path="/profile"
-                render={props => (
-                  <ProfilePage {...props} user={this.state.user} />
-                )}
-              />
-              <Route
-                path="/routines/:id/build"
+                path="/build/:id"
                 render={props => (
                   <BuildPage
                     {...props}
@@ -343,6 +332,7 @@ class App extends Component {
                 )}
               />
               <Route
+                exact
                 path="/routines"
                 render={props => (
                   <RoutinesPage
@@ -366,6 +356,21 @@ class App extends Component {
                     jokes={this.state.jokes}
                     user={this.state.user}
                   />
+                )}
+              />
+              <Route
+                path="/register"
+                render={() => <Redirect to="/profile" />}
+              />
+              <Route
+                path="/landing"
+                render={() => <Redirect to="/profile" />}
+              />
+              <Route
+                exact
+                path="/profile"
+                render={props => (
+                  <ProfilePage {...props} user={this.state.user} />
                 )}
               />
             </Switch>

@@ -80,7 +80,7 @@ class Routines extends Component {
         <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete routine</button>
         <button onClick={this.editFormHandler}>Edit routine</button>
-        <Link to={`/routines/${id}/build`}>
+        <Link to={`/build/${id}`}>
           <button>Build routine</button>
         </Link>
         {maybeFormOpen}

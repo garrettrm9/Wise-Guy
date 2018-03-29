@@ -7,6 +7,10 @@ class RoutineJokesList extends Component {
     this.renderJokes = this.renderJokes.bind(this);
   }
 
+  // componentWillMount() {
+  //   this.props.getRoutineJokes(this.props.oneRoutine.id);
+  // }
+
   renderJokes(joke, index) {
     return (
       <RoutineJoke
@@ -30,5 +34,3 @@ class RoutineJokesList extends Component {
 }
 
 export default RoutineJokesList;
-
-

@@ -23,6 +23,7 @@ class BuildPage extends Component {
           deleteRoutineJoke={this.props.deleteRoutineJoke}
           oneRoutine={this.props.oneRoutine}
           routineJokes={this.props.routineJokes}
+          getRoutineJokes={this.props.getRoutineJokes}
         />
         <BuildJokesList
           addJokeToRoutine={this.props.addJokeToRoutine}
@@ -30,6 +31,7 @@ class BuildPage extends Component {
           editJoke={this.props.editJoke}
           jokes={this.props.jokes}
           oneRoutine={this.props.oneRoutine}
+          user={this.props.user}
         />
         <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
       </div>

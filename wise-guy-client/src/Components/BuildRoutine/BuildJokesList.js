@@ -12,6 +12,7 @@ class BuildJokesList extends Component {
       <BuildJokes
         joke={joke}
         index={index}
+        oneRoutine={this.props.oneRoutine}
         deleteJoke={this.props.deleteJoke}
         editJoke={this.props.editJoke}
         addJokeToRoutine={this.props.addJokeToRoutine}
@@ -21,8 +22,13 @@ class BuildJokesList extends Component {
 
   render() {
     const jokes = this.props.jokes.map(this.renderJokes);
+    const firstName = this.props.user.first_name;
+    const lastName = this.props.user.last_name;
     return (
       <div className="jokes_container">
+        <h2>
+          All jokes written by {firstName} {lastName}:
+        </h2>
         <div className="jokes_list">{jokes}</div>
       </div>
     );
