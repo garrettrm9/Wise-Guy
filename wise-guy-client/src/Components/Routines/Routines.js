@@ -75,12 +75,12 @@ class Routines extends Component {
       );
     }
     return (
-      <ul key={id.toString()}>
+      <ul>
         <li>Routine name: {name}</li>
         <li>Estimated length: {estimated_length}</li>
         <button onClick={this.deleteHandler}>Delete routine</button>
         <button onClick={this.editFormHandler}>Edit routine</button>
-        <Link to={`/build/${id}`}>
+        <Link to={`/routines/${id}`}>
           <button>Build routine</button>
         </Link>
         {maybeFormOpen}

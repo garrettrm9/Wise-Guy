@@ -15,6 +15,7 @@ class RoutinesPage extends Component {
           deleteRoutine={this.props.deleteRoutine}
           editRoutine={this.props.editRoutine}
           routines={this.props.routines}
+          user={this.props.user}
         />
         <RoutinesForm
           addRoutine={this.props.addRoutine}
@@ -27,4 +28,4 @@ class RoutinesPage extends Component {
 
 export default RoutinesPage;
 
-// <Nav/>
+

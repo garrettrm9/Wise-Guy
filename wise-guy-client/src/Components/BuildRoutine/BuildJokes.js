@@ -49,7 +49,6 @@ class BuildJokes extends Component {
 
   render() {
     const joke = this.props.joke;
-    const id = joke.id;
     const name = joke.name;
     const joke_text = joke.joke_text;
     const estimated_length = joke.estimated_length;
@@ -89,7 +88,7 @@ class BuildJokes extends Component {
       );
     }
     return (
-      <ul key={id.toString()}>
+      <ul>
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
         <li>Estimated length: {estimated_length}</li>

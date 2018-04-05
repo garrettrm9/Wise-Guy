@@ -14,6 +14,7 @@ class RoutinesList extends Component {
         index={index}
         deleteRoutine={this.props.deleteRoutine}
         editRoutine={this.props.editRoutine}
+        key={routine.id}
       />
     );
   }

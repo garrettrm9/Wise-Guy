@@ -10,6 +10,7 @@ class BuildPage extends Component {
   }
 
   componentDidMount() {
+    // console.log("buildpage this.state.id", this.state.id);
     this.props.getOneRoutine(this.state.id);
     this.props.getRoutineJokes(this.state.id);
   }

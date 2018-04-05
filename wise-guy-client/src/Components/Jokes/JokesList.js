@@ -14,6 +14,7 @@ class JokesList extends Component {
         index={index}
         deleteJoke={this.props.deleteJoke}
         editJoke={this.props.editJoke}
+        key={joke.id}
       />
     );
   }
