@@ -1,6 +1,6 @@
 class RoutineWithJokesController < ApplicationController
 
-# !!!renders all of a routine's jokes!!!
+# !!!renders all of a routine's jokes!!!!
   def index
     routine = Routine.find(params[:id])
     jokes = routine.jokes
