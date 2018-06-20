@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Form, Icon } from "semantic-ui-react";
 
 class JokesForm extends Component {
   constructor(props) {
@@ -33,32 +34,44 @@ class JokesForm extends Component {
 
   render() {
     return (
-      <div className="jokes_form">
-        <form onSubmit={this.submitJoke}>
-          <label>Add a joke! </label>
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Joke name"
-            name="name"
-            value={this.state.jokes.name}
-          />
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Joke text"
-            name="joke_text"
-            value={this.state.jokes.joke_text}
-          />
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Joke length"
-            name="estimated_length"
-            value={this.state.jokes.estimated_length}
-          />
-          <button>Submit new joke</button>
-        </form>
+      <div>
+        <h3>Add a joke!</h3>
+        <Form onSubmit={this.submitJoke}>
+          <Form.Field>
+            <label>Give a title to your joke here</label>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Joke name"
+              name="name"
+              value={this.state.jokes.name}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Write out the joke here</label>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Joke text"
+              name="joke_text"
+              value={this.state.jokes.joke_text}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>How long is the joke?</label>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Joke length"
+              name="estimated_length"
+              value={this.state.jokes.estimated_length}
+            />
+          </Form.Field>
+          <Button color="green" icon labelPosition="left">
+            <Icon name="right arrow" />
+            Submit joke!
+          </Button>
+        </Form>
       </div>
     );
   }

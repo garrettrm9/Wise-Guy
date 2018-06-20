@@ -26,7 +26,7 @@ class BuildJokesList extends Component {
     const firstName = this.props.user.first_name;
     const lastName = this.props.user.last_name;
     return (
-      <div className="jokes_container">
+      <div>
         <h2>
           All jokes written by {firstName} {lastName}:
         </h2>

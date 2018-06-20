@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BuildJokesList from "./BuildJokesList";
 import JokesForm from "../Jokes/JokesForm";
 import RoutineJokesList from "./RoutineJokesList";
+import Paper from "@material-ui/core/Paper";
 
 class BuildPage extends Component {
   constructor(props) {
@@ -18,8 +19,8 @@ class BuildPage extends Component {
   render() {
     const name = this.props.oneRoutine.name;
     return (
-      <div>
-        <h1 className="header">This routine is called {name}!</h1>
+      <Paper elevation={20} className="container">
+        <h1 className="build_greeting">This routine is called '{name}'!</h1>
         <RoutineJokesList
           deleteRoutineJoke={this.props.deleteRoutineJoke}
           oneRoutine={this.props.oneRoutine}
@@ -35,7 +36,7 @@ class BuildPage extends Component {
           user={this.props.user}
         />
         <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
-      </div>
+      </Paper>
     );
   }
 }

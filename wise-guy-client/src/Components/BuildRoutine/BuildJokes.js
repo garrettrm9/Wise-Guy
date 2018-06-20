@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 
 class BuildJokes extends Component {
   constructor(props) {
@@ -92,9 +93,16 @@ class BuildJokes extends Component {
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
         <li>Estimated length: {estimated_length}</li>
-        <button onClick={this.deleteHandler}>Delete joke</button>
-        <button onClick={this.editFormHandler}>Edit joke</button>
-        <button onClick={this.addJokeHandler}>Add to the routine</button>
+        <br />
+        <Button color="red" onClick={this.deleteHandler}>
+          Delete this joke
+        </Button>
+        <Button color="black" onClick={this.editFormHandler}>
+          Edit this joke
+        </Button>
+        <Button color="yellow" onClick={this.addJokeHandler}>
+          Add this joke to the routine
+        </Button>
         {maybeFormOpen}
       </ul>
     );

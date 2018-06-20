@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 
 class Jokes extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class Jokes extends Component {
     let maybeFormOpen = null;
     if (this.state.isEditing) {
       maybeFormOpen = (
-        <div className="joke_form">
+        <div>
           <form onSubmit={this.sendEditedJoke}>
             <label>Edit this joke</label>
             <input
@@ -86,8 +87,13 @@ class Jokes extends Component {
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
         <li>Estimated length: {estimated_length}</li>
-        <button onClick={this.deleteHandler}>Delete joke</button>
-        <button onClick={this.editFormHandler}>Edit joke</button>
+        <br />
+        <Button color="blue" onClick={this.deleteHandler}>
+          Delete this joke
+        </Button>
+        <Button color="black" onClick={this.editFormHandler}>
+          Edit this joke
+        </Button>
         {maybeFormOpen}
       </ul>
     );

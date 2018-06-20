@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Button, Form } from "semantic-ui-react";
 
 class Routines extends Component {
   constructor(props) {
@@ -50,27 +51,31 @@ class Routines extends Component {
     if (this.state.isEditing) {
       maybeFormOpen = (
         <div className="routine_form">
-          <form onSubmit={this.sendEditedRoutine}>
-            <label>Edit this routine</label>
-            <input
-              onChange={this.changeHandler}
-              type="text"
-              placeholder={name}
-              name="name"
-              value={this.state.routines.name}
-            />
-            <input
-              onChange={this.changeHandler}
-              type="text"
-              placeholder={estimated_length}
-              name="estimated_length"
-              value={this.state.routines.estimated_length}
-            />
+          <Form onSubmit={this.sendEditedRoutine}>
+            <Form.field>
+              <label>Edit this routine</label>
+              <input
+                onChange={this.changeHandler}
+                type="text"
+                placeholder={name}
+                name="name"
+                value={this.state.routines.name}
+              />
+            </Form.field>
+            <Form.field>
+              <input
+                onChange={this.changeHandler}
+                type="text"
+                placeholder={estimated_length}
+                name="estimated_length"
+                value={this.state.routines.estimated_length}
+              />
+            </Form.field>
             <button onClick={this.editFormHandler}>
               Never mind, screw that edit
             </button>
             <button>Submit edited routine</button>
-          </form>
+          </Form>
         </div>
       );
     }
@@ -78,10 +83,15 @@ class Routines extends Component {
       <ul>
         <li>Routine name: {name}</li>
         <li>Estimated length: {estimated_length}</li>
-        <button onClick={this.deleteHandler}>Delete routine</button>
-        <button onClick={this.editFormHandler}>Edit routine</button>
+        <br />
+        <Button color="red" onClick={this.deleteHandler}>
+          Delete this routine
+        </Button>
+        <Button color="black" onClick={this.editFormHandler}>
+          Edit this routine
+        </Button>
         <Link to={`/routines/${id}`}>
-          <button>Build routine</button>
+          <Button color="yellow">Add jokes to this routine</Button>
         </Link>
         {maybeFormOpen}
       </ul>

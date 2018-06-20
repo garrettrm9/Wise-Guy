@@ -25,9 +25,9 @@ class RoutineJokesList extends Component {
   render() {
     const jokes = this.props.routineJokes.map(this.renderJokes);
     return (
-      <div className="build_jokes_container">
-        <h2>Routine {this.props.oneRoutine.name} has the following jokes:</h2>
-        <div className="jokes_list">{jokes}</div>
+      <div>
+        <h2>Routine '{this.props.oneRoutine.name}' has the following jokes:</h2>
+        <div>{jokes}</div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 
 class RoutineJoke extends Component {
   constructor(props) {
@@ -55,7 +56,10 @@ class RoutineJoke extends Component {
         <li>Name: {name}</li>
         <li>Joke text: {joke_text}</li>
         <li>Estimated length: {estimated_length}</li>
-        <button onClick={this.deleteHandler}>Remove joke from routine</button>
+        <br />
+        <Button color="orange" onClick={this.deleteHandler}>
+          Remove this joke from the routine
+        </Button>
       </ul>
     );
   }

@@ -4,67 +4,66 @@ font-family: 'Pacifico', cursive;
 font-family: 'Gloria Hallelujah', cursive;*/
 
 body {
-  background-color: #210430;
-  color: white;
+  background-image: url("https://filiptester.files.wordpress.com/2015/06/background.jpg?w=1920&h=1200&crop=1");
+  background-size: 100%;
   font-family: "Indie Flower", cursive;
 }
 
 h1 {
   font-family: "Lobster", cursive;
   font-size: 80px;
-}
-
-.header {
-  font-size: 50px;
   text-decoration: underline;
-}
-
-.nav_bar {
-  text-align: left;
 }
 
 h2 {
   font-family: "Gloria Hallelujah", cursive;
+  text-decoration: underline;
+}
+
+p {
+  font-size: 20px;
+}
+
+ul {
+  list-style-position: inside;
+  font-size: 20px;
+}
+
+.Buttons {
+  padding: 5px;
 }
 
 .App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding: 50px;
 }
 
-.routines_list {
-  text-align: left;
+.container {
+  max-width: 50%;
+  flex: 1;
+  padding: 30px;
+  border: 2px black solid;
+  background-color: black;
 }
 
-.jokes_list {
-  text-align: left;
+.preview {
+  padding: 30px;
+  border: 2px black solid;
 }
 
-/*Out of the box!!*/
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.form {
+  padding: 30px;
+  border: 2px black solid;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.profile_greeting {
+  font-size: 50px;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.build_greeting {
+  font-size: 40px;
 }

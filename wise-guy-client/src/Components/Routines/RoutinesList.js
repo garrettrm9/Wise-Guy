@@ -22,8 +22,8 @@ class RoutinesList extends Component {
   render() {
     const routines = this.props.routines.map(this.renderRoutines);
     return (
-      <div className="routines_container">
-        <div className="routines_list">{routines}</div>
+      <div>
+        <div>{routines}</div>
       </div>
     );
   }

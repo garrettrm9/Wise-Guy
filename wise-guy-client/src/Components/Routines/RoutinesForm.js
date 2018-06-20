@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Form, Icon } from "semantic-ui-react";
 
 class RoutinesForm extends Component {
   constructor(props) {
@@ -30,25 +31,34 @@ class RoutinesForm extends Component {
 
   render() {
     return (
-      <div className="routines_form">
-        <form onSubmit={this.submitRoutine}>
-          <label>Add a routine! </label>
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Routine name"
-            name="name"
-            value={this.state.routines.name}
-          />
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Estimated length"
-            name="estimated_length"
-            value={this.state.routines.estimated_length}
-          />
-          <button>Submit new routine</button>
-        </form>
+      <div>
+        <h3>Add a routine!</h3>
+        <Form onSubmit={this.submitRoutine}>
+          <Form.Field>
+            <label>Name your routine here</label>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Routine name"
+              name="name"
+              value={this.state.routines.name}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>How long is this routine?</label>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Estimated length"
+              name="estimated_length"
+              value={this.state.routines.estimated_length}
+            />
+          </Form.Field>
+          <Button color="green" icon labelPosition="left">
+            <Icon name="right arrow" />
+            Submit routine!
+          </Button>
+        </Form>
       </div>
     );
   }

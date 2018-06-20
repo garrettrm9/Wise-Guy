@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Icon } from "semantic-ui-react";
 
 class SignUp extends Component {
   constructor(props) {
@@ -46,7 +47,10 @@ class SignUp extends Component {
             name="password"
             value={this.state.password}
           />
-          <button>Login yo'self</button>
+          <Button color="green" icon labelPosition="left">
+            <Icon name="right arrow" />
+            Login yo'self
+          </Button>
         </form>
       </div>
     );

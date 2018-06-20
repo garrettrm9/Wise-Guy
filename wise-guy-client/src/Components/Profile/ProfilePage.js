@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import JokesPrev from "./JokesPrev";
 import RoutinesPrev from "./RoutinesPrev";
+import Paper from "@material-ui/core/Paper";
 
 class ProfilePage extends Component {
   render() {
@@ -10,13 +11,13 @@ class ProfilePage extends Component {
     // const oneLinerJoke = require("one-liner-joke");
     // const getRandomJoke = oneLinerJoke.getRandomJoke();
     return (
-      <div>
-        <h1 className="header">
+      <Paper elevation={20} className="container">
+        <h1 className="profile_greeting">
           Welcome to your profile page, {firstName} {lastName} !
         </h1>
         <JokesPrev />
         <RoutinesPrev />
-      </div>
+      </Paper>
     );
   }
 }
