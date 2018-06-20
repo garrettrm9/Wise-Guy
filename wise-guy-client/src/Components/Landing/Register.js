@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Paper from "@material-ui/core/Paper";
+import { Button, Form, Label, Icon } from "semantic-ui-react";
 
 class Register extends Component {
   constructor(props) {
@@ -31,41 +33,48 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="registration_container">
-        <form onSubmit={this.registerUser}>
-          <h1 className="header">Join the movement (please?)</h1>
-          <label>Register </label>
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="First name"
-            name="first_name"
-            value={this.state.first_name}
-          />
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Last name"
-            name="last_name"
-            value={this.state.last_name}
-          />
-          <input
-            onChange={this.changeHandler}
-            type="text"
-            placeholder="Email"
-            name="email"
-            value={this.state.email}
-          />
-          <input
-            onChange={this.changeHandler}
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={this.state.password}
-          />
-          <button>Submit registration</button>
-        </form>
-      </div>
+      <Paper elevation={20} className="container">
+        <Form onSubmit={this.registerUser}>
+          <h2>Join the movement (please?)</h2>
+          <Label size="huge">
+            <Icon name="down arrow" />Register
+          </Label>
+          <br />
+          <br />
+          <Form.Field>
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="First name"
+              name="first_name"
+              value={this.state.first_name}
+            />
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Last name"
+              name="last_name"
+              value={this.state.last_name}
+            />
+            <input
+              onChange={this.changeHandler}
+              type="text"
+              placeholder="Email"
+              name="email"
+              value={this.state.email}
+            />
+            <input
+              onChange={this.changeHandler}
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={this.state.password}
+            />
+          </Form.Field>
+          <br />
+          <Button color="green">Submit registration</Button>
+        </Form>
+      </Paper>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 
 class BuildJokes extends Component {
   constructor(props) {
@@ -100,7 +100,13 @@ class BuildJokes extends Component {
         <Button color="black" onClick={this.editFormHandler}>
           Edit this joke
         </Button>
-        <Button color="yellow" onClick={this.addJokeHandler}>
+        <Button
+          color="yellow"
+          icon
+          labelPosition="right"
+          onClick={this.addJokeHandler}
+        >
+          <Icon name="up arrow" />
           Add this joke to the routine
         </Button>
         {maybeFormOpen}

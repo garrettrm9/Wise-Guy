@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import JokesList from "./JokesList";
 import JokesForm from "./JokesForm";
 import Paper from "@material-ui/core/Paper";
+import { Divider } from "semantic-ui-react";
 
 class JokesPage extends Component {
   render() {
@@ -10,13 +11,14 @@ class JokesPage extends Component {
     return (
       <Paper elevation={20} className="container">
         <h2>These ground-breaking jokes belong to {firstName}</h2>
+        <Divider hidden />
+        <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
+        <Divider hidden />
         <JokesList
           deleteJoke={this.props.deleteJoke}
           editJoke={this.props.editJoke}
           jokes={this.props.jokes}
         />
-        <br />
-        <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
       </Paper>
     );
   }

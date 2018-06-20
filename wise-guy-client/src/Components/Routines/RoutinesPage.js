@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import RoutinesList from "./RoutinesList";
 import RoutinesForm from "./RoutinesForm";
 import Paper from "@material-ui/core/Paper";
+import { Divider } from "semantic-ui-react";
 
 class RoutinesPage extends Component {
   render() {
@@ -12,15 +13,16 @@ class RoutinesPage extends Component {
         <h2 className="header">
           These perfect routines were written by {firstName}
         </h2>
+        <Divider hidden />
+        <RoutinesForm
+          addRoutine={this.props.addRoutine}
+          user={this.props.user}
+        />
+        <Divider hidden />
         <RoutinesList
           deleteRoutine={this.props.deleteRoutine}
           editRoutine={this.props.editRoutine}
           routines={this.props.routines}
-          user={this.props.user}
-        />
-        <br />
-        <RoutinesForm
-          addRoutine={this.props.addRoutine}
           user={this.props.user}
         />
       </Paper>

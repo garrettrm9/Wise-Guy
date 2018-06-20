@@ -190,8 +190,8 @@ class App extends Component {
   }
   // !!Edit Joke based on joke form data and jokeId arguments, user_id from state!!
   editJoke(joke, jokeId) {
-    // console.log("app editJoke", joke)
-    // console.log("editJoke jokeId", jokeId)
+    // console.log("app editJoke", joke);
+    // console.log("editJoke jokeId", jokeId);
     axios({
       url: `http://localhost:3000/users/${this.state.user.id}/jokes/${jokeId}`,
       method: "PUT",

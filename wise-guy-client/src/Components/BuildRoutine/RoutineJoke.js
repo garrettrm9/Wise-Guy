@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 
 class RoutineJoke extends Component {
   constructor(props) {
@@ -57,7 +57,13 @@ class RoutineJoke extends Component {
         <li>Joke text: {joke_text}</li>
         <li>Estimated length: {estimated_length}</li>
         <br />
-        <Button color="orange" onClick={this.deleteHandler}>
+        <Button
+          color="orange"
+          icon
+          labelPosition="right"
+          onClick={this.deleteHandler}
+        >
+          <Icon name="up arrow" />
           Remove this joke from the routine
         </Button>
       </ul>

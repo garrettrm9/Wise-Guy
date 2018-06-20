@@ -15,7 +15,7 @@ class JokesPrev extends Component {
           it, or to add something new!
         </p>
         <Link to="/jokes">
-          <Button primary icon labelPosition="left">
+          <Button color="brown" icon labelPosition="left">
             <Icon name="right arrow" />
             See all your jokes!
           </Button>

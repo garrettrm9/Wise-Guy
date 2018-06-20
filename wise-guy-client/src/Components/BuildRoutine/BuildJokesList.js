@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BuildJokes from "./BuildJokes";
+import { Button, Modal } from "semantic-ui-react";
 
 class BuildJokesList extends Component {
   constructor(props) {
@@ -23,15 +24,18 @@ class BuildJokesList extends Component {
 
   render() {
     const jokes = this.props.jokes.map(this.renderJokes);
-    const firstName = this.props.user.first_name;
-    const lastName = this.props.user.last_name;
     return (
-      <div>
-        <h2>
-          All jokes written by {firstName} {lastName}:
-        </h2>
-        <div className="jokes_list">{jokes}</div>
-      </div>
+      <Modal
+        trigger={
+          <Button circular size="large" color="brown">
+            See all your jokes!
+          </Button>
+        }
+        closeIcon={<Button>Go back</Button>}
+      >
+        <Modal.Header>Every joke you've written!</Modal.Header>
+        <Modal.Description>{jokes}</Modal.Description>
+      </Modal>
     );
   }
 }

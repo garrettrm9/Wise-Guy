@@ -1,75 +1,70 @@
 import React, { Component } from "react";
-import { Button, Form, Icon, Label, Modal } from "semantic-ui-react";
+import { Button, Modal, Form, Label, Icon } from "semantic-ui-react";
 
-class RoutinesForm extends Component {
+class EditRoutineForm extends Component {
   constructor(props) {
     super(props);
     this.state = { routines: {} };
-    this.submitRoutine = this.submitRoutine.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
+    this.sendEditedRoutine = this.sendEditedRoutine.bind(this);
   }
 
-  submitRoutine(e) {
+  sendEditedRoutine(e) {
     e.preventDefault();
-    this.props.addRoutine(this.state);
-    // console.log("Routine submitRoutine",this.state)
+    console.log("joke sendEditedRoutine", this.props.routine.id);
+    this.props.editRoutine(this.state, this.props.routine.id);
   }
 
-  //grabs changes in form below, stores in routines state, also grabs user_id from props
-  //and adds to routines state, fulfilling all params for POST request
   changeHandler(e) {
-    // console.log("Routine changeHandler", his.state)
     e.preventDefault();
     const key = e.target.name;
     const value = e.target.value;
     this.setState(prevState => {
       prevState.routines[key] = value;
-      prevState.routines.user_id = this.props.user.id;
       return prevState;
     });
+    // console.log("routine editHandler", this.state)
   }
 
   render() {
+    const routine = this.props.routine;
+    const name = routine.name;
+    const estimated_length = routine.estimated_length;
     return (
       <Modal
-        trigger={
-          <Button circular size="large" color="green">
-            Add a new routine!
-          </Button>
-        }
+        trigger={<Button color="grey">Edit this routine</Button>}
         closeIcon={<Button>Go back</Button>}
       >
-        <Modal.Header>Add a joke!</Modal.Header>
+        <Modal.Header>Edit this routine</Modal.Header>
         <Modal.Description>
-          <Form onSubmit={this.submitRoutine}>
-            <h2>Add a routine!</h2>
-            <Form.Field>
+          <Form onSubmit={this.sendEditedRoutine}>
+            <Form.field>
               <Label pointing="below" size="big">
-                Name your routine here
+                Change the routine's title here
               </Label>
               <input
                 onChange={this.changeHandler}
                 type="text"
-                placeholder="Routine name"
+                placeholder={name}
                 name="name"
                 value={this.state.routines.name}
               />
-            </Form.Field>
-            <Form.Field>
+            </Form.field>
+            <Form.field>
               <Label pointing="below" size="big">
-                How long is this routine?
+                Update the estimated length here
               </Label>
               <input
                 onChange={this.changeHandler}
                 type="text"
-                placeholder="Estimated length"
+                placeholder={estimated_length}
                 name="estimated_length"
                 value={this.state.routines.estimated_length}
               />
-            </Form.Field>
-            <Button color="green" icon labelPosition="left">
+            </Form.field>
+            <Button color="green" icon position="left">
               <Icon name="up arrow" />
-              Submit this routine!
+              Submit your edited routine!
             </Button>
           </Form>
         </Modal.Description>
@@ -77,5 +72,4 @@ class RoutinesForm extends Component {
     );
   }
 }
-
-export default RoutinesForm;
+export default EditRoutineForm;

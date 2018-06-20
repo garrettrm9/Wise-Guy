@@ -30,9 +30,9 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="login">
+      <div>
         <form onSubmit={this.loginUser}>
-          <label>Login </label>
+          <label>Login</label>
           <input
             onChange={this.changeHandler}
             type="text"
@@ -48,7 +48,7 @@ class SignUp extends Component {
             value={this.state.password}
           />
           <Button color="green" icon labelPosition="left">
-            <Icon name="right arrow" />
+            <Icon name="left arrow" />
             Login yo'self
           </Button>
         </form>

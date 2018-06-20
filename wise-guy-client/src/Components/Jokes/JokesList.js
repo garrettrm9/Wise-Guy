@@ -21,11 +21,7 @@ class JokesList extends Component {
 
   render() {
     const jokes = this.props.jokes.map(this.renderJokes);
-    return (
-      <div className="jokes_container">
-        <div className="jokes_list">{jokes}</div>
-      </div>
-    );
+    return <div>{jokes}</div>;
   }
 }
 

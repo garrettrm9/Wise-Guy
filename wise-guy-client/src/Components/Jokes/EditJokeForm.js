@@ -1,89 +1,88 @@
 import React, { Component } from "react";
-import { Button, Form, Icon, Label, Modal } from "semantic-ui-react";
+import { Button, Icon, Modal, Form, Label } from "semantic-ui-react";
 
-class JokesForm extends Component {
+class EditJokeForm extends Component {
   constructor(props) {
     super(props);
     this.state = { jokes: {} };
-    this.submitJoke = this.submitJoke.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
+    this.sendEditedJoke = this.sendEditedJoke.bind(this);
   }
 
-  //grabs changes in form below, stores in joke state, also grabs user_id from props
-  //and adds to joke state, fulfilling all params for POST request
+  sendEditedJoke(e) {
+    e.preventDefault();
+    // console.log("joke sendEditedJoke", this.props.joke.id);
+    this.props.editJoke(this.state, this.props.joke.id);
+  }
+
   changeHandler(e) {
-    // console.log("submitNewJoke", this.props.user.id)
-    // console.log("Joke changeHandler", this.state)
-    // this.setState({jokes: {user_id: this.props.user.id}})
     e.preventDefault();
     const key = e.target.name;
     const value = e.target.value;
     this.setState(prevState => {
       prevState.jokes[key] = value;
-      prevState.jokes.user_id = this.props.user.id;
       return prevState;
     });
-  }
-
-  submitJoke(e) {
-    // this.setState({jokes: {user_id: this.props.user.id}})
-    // console.log("Joke submitJoke", this.state)
-    e.preventDefault();
-    this.props.addJoke(this.state);
+    // console.log("routine editHandler", this.state)
   }
 
   render() {
+    const joke = this.props.joke;
+    const name = joke.name;
+    const joke_text = joke.joke_text;
+    const estimated_length = joke.estimated_length;
     return (
       <Modal
         trigger={
-          <Button circular size="large" color="green">
-            Add a new joke!
+          <Button color="brown" icon labelPosition="right">
+            <Icon name="up arrow" />
+            Edit this joke
           </Button>
         }
         closeIcon={<Button>Go back</Button>}
       >
-        <Modal.Header>Add a joke!</Modal.Header>
+        <Modal.Header>Edit this joke</Modal.Header>
         <Modal.Description>
-          <Form onSubmit={this.submitJoke}>
+          <Form onSubmit={this.sendEditedJoke}>
             <Form.Field>
               <Label pointing="below" size="big">
-                Give a title to your joke here
+                Change the joke's title here
               </Label>
               <input
                 onChange={this.changeHandler}
                 type="text"
-                placeholder="Joke name"
+                placeholder={name}
                 name="name"
                 value={this.state.jokes.name}
               />
             </Form.Field>
             <Form.Field>
               <Label pointing="below" size="big">
-                Write out the joke here
+                Re-write the joke's content here
               </Label>
               <input
                 onChange={this.changeHandler}
                 type="text"
-                placeholder="Joke text"
+                placeholder={joke_text}
                 name="joke_text"
                 value={this.state.jokes.joke_text}
               />
             </Form.Field>
             <Form.Field>
               <Label pointing="below" size="big">
-                How long is the joke?
+                Update the estimated length here
               </Label>
               <input
                 onChange={this.changeHandler}
                 type="text"
-                placeholder="Joke length"
+                placeholder={estimated_length}
                 name="estimated_length"
                 value={this.state.jokes.estimated_length}
               />
             </Form.Field>
-            <Button color="green" icon labelPosition="left">
+            <Button color="green" icon position="left">
               <Icon name="up arrow" />
-              Submit joke!
+              Submit your edited joke!
             </Button>
           </Form>
         </Modal.Description>
@@ -91,5 +90,4 @@ class JokesForm extends Component {
     );
   }
 }
-
-export default JokesForm;
+export default EditJokeForm;

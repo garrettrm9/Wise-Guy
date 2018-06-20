@@ -3,6 +3,7 @@ import BuildJokesList from "./BuildJokesList";
 import JokesForm from "../Jokes/JokesForm";
 import RoutineJokesList from "./RoutineJokesList";
 import Paper from "@material-ui/core/Paper";
+import { Divider } from "semantic-ui-react";
 
 class BuildPage extends Component {
   constructor(props) {
@@ -21,12 +22,7 @@ class BuildPage extends Component {
     return (
       <Paper elevation={20} className="container">
         <h1 className="build_greeting">This routine is called '{name}'!</h1>
-        <RoutineJokesList
-          deleteRoutineJoke={this.props.deleteRoutineJoke}
-          oneRoutine={this.props.oneRoutine}
-          routineJokes={this.props.routineJokes}
-          getRoutineJokes={this.props.getRoutineJokes}
-        />
+        <Divider hidden />
         <BuildJokesList
           addJokeToRoutine={this.props.addJokeToRoutine}
           deleteJoke={this.props.deleteJoke}
@@ -36,6 +32,13 @@ class BuildPage extends Component {
           user={this.props.user}
         />
         <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
+        <Divider hidden />
+        <RoutineJokesList
+          deleteRoutineJoke={this.props.deleteRoutineJoke}
+          oneRoutine={this.props.oneRoutine}
+          routineJokes={this.props.routineJokes}
+          getRoutineJokes={this.props.getRoutineJokes}
+        />
       </Paper>
     );
   }
