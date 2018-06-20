@@ -39,7 +39,7 @@ class RoutinesForm extends Component {
         }
         closeIcon={<Button>Go back</Button>}
       >
-        <Modal.Header>Add a joke!</Modal.Header>
+        <Modal.Header>Add a routine!</Modal.Header>
         <Modal.Description>
           <Form onSubmit={this.submitRoutine}>
             <h2>Add a routine!</h2>

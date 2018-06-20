@@ -38,7 +38,7 @@ class EditRoutineForm extends Component {
         <Modal.Header>Edit this routine</Modal.Header>
         <Modal.Description>
           <Form onSubmit={this.sendEditedRoutine}>
-            <Form.field>
+            <Form.Field>
               <Label pointing="below" size="big">
                 Change the routine's title here
               </Label>
@@ -49,8 +49,8 @@ class EditRoutineForm extends Component {
                 name="name"
                 value={this.state.routines.name}
               />
-            </Form.field>
-            <Form.field>
+            </Form.Field>
+            <Form.Field>
               <Label pointing="below" size="big">
                 Update the estimated length here
               </Label>
@@ -61,7 +61,7 @@ class EditRoutineForm extends Component {
                 name="estimated_length"
                 value={this.state.routines.estimated_length}
               />
-            </Form.field>
+            </Form.Field>
             <Button color="green" icon position="left">
               <Icon name="up arrow" />
               Submit your edited routine!

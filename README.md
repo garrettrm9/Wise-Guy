@@ -5,4 +5,5 @@
 * Removing auth
 * Editing jokes on Build page does not re-render joke if its part of that routine (rendered above)
 * Needs nav bar for navigation
+* Auth needs validation!!!!
 
