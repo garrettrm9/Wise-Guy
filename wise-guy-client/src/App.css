@@ -22,6 +22,11 @@ h2 {
   text-decoration: underline;
 }
 
+h3 {
+  font-family: "Pacifico", cursive;
+  font-size: 25px;
+}
+
 p {
   font-size: 20px;
 }
@@ -64,4 +69,8 @@ ul {
 
 .build_greeting {
   font-size: 40px;
+}
+
+.registration {
+  font-size: 35px;
 }

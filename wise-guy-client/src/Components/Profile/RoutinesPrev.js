@@ -12,7 +12,7 @@ class RoutinesPrev extends Component {
         <h2>All your routines</h2>
         <p>
           Click here to see a list of all your routines, to delete a routine, to
-          edit it, or to add something new!
+          update it, or to add something new!
         </p>
         <Link to="/routines">
           <Button color="red" icon labelPosition="left">

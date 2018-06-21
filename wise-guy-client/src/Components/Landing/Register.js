@@ -35,7 +35,7 @@ class Register extends Component {
     return (
       <Paper elevation={20} className="container">
         <Form onSubmit={this.registerUser}>
-          <h2>Join the movement (please?)</h2>
+          <h2 className="registration">Join the movement (please?)</h2>
           <Label size="huge">
             <Icon name="down arrow" />Register
           </Label>

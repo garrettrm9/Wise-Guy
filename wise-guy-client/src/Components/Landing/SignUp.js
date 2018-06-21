@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Form, Label } from "semantic-ui-react";
 
 class SignUp extends Component {
   constructor(props) {
@@ -30,9 +30,9 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.loginUser}>
-          <label>Login</label>
+      <Form onSubmit={this.loginUser}>
+        <Form.Field>
+          <h3>Welcome back you old so-and-so!</h3>
           <input
             onChange={this.changeHandler}
             type="text"
@@ -40,6 +40,8 @@ class SignUp extends Component {
             name="email"
             value={this.state.email}
           />
+        </Form.Field>
+        <Form.Field>
           <input
             onChange={this.changeHandler}
             type="password"
@@ -47,12 +49,12 @@ class SignUp extends Component {
             name="password"
             value={this.state.password}
           />
-          <Button color="green" icon labelPosition="left">
-            <Icon name="left arrow" />
-            Login yo'self
-          </Button>
-        </form>
-      </div>
+        </Form.Field>
+        <Button color="green" icon labelPosition="left">
+          <Icon name="up arrow" />
+          Login yo'self
+        </Button>
+      </Form>
     );
   }
 }

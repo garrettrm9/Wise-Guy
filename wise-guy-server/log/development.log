@@ -32513,3 +32513,49 @@ Processing by RoutineWithJokesController#index as HTML
 Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 1.0ms)
 
 
+Started POST "/users/login" for 127.0.0.1 at 2018-06-20 19:59:08 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"garrett9@garrett.com", "password"=>"[FILTERED]", "user"=>{"email"=>"garrett9@garrett.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "garrett9@garrett.com"], ["LIMIT", 1]]
+Completed 200 OK in 72ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5/jokes/" for 127.0.0.1 at 2018-06-20 19:59:08 -0400
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Started GET "/users/5/routines" for 127.0.0.1 at 2018-06-20 19:59:08 -0400
+  [1m[36mJoke Load (0.4ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."user_id" = $1[0m  [["user_id", 5]]
+Processing by RoutinesController#index as HTML
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 1.4ms)
+
+
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRoutine Load (0.6ms)[0m  [1m[34mSELECT "routines".* FROM "routines" WHERE "routines"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/login" for 127.0.0.1 at 2018-06-20 20:00:20 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"garrett9@garrett.com", "password"=>"[FILTERED]", "user"=>{"email"=>"garrett9@garrett.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "garrett9@garrett.com"], ["LIMIT", 1]]
+Completed 200 OK in 73ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5/routines" for 127.0.0.1 at 2018-06-20 20:00:20 -0400
+Processing by RoutinesController#index as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRoutine Load (0.3ms)[0m  [1m[34mSELECT "routines".* FROM "routines" WHERE "routines"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 14ms (Views: 4.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/5/jokes/" for 127.0.0.1 at 2018-06-20 20:00:20 -0400
+Processing by JokesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mJoke Load (0.3ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 0.6ms)
+
+

@@ -11,8 +11,8 @@ class JokesPrev extends Component {
       <Paper elevation={20} className="preview">
         <h2>All your jokes</h2>
         <p>
-          Click here to see a list of all your jokes, to delete a joke, to edit
-          it, or to add something new!
+          Click here to see a list of all your jokes, to delete an joke, to
+          update it, or to add something new!
         </p>
         <Link to="/jokes">
           <Button color="brown" icon labelPosition="left">
