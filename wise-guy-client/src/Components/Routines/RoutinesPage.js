@@ -11,7 +11,7 @@ class RoutinesPage extends Component {
     return (
       <Paper elevation={20} className="container">
         <h2 className="header">
-          These perfect routines were written by {firstName}
+          These perfect routines were written by {firstName}:
         </h2>
         <Divider hidden />
         <RoutinesForm

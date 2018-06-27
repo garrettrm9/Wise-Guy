@@ -21,6 +21,7 @@ class App extends Component {
     super(props);
     this.state = {
       oneRoutine: [],
+      oneJoke: [],
       routines: [],
       jokes: [],
       routineJokes: [],
@@ -39,6 +40,7 @@ class App extends Component {
     this.getRoutineJokes = this.getRoutineJokes.bind(this);
     this.addJokeToRoutine = this.addJokeToRoutine.bind(this);
     this.deleteRoutineJoke = this.deleteRoutineJoke.bind(this);
+    this.postJokeToRoutine = this.postJokeToRoutine.bind(this);
     this.register = this.register.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -56,7 +58,7 @@ class App extends Component {
   //!!Render all Routines based on user_id in argument!!
   getRoutines(userId) {
     axios({
-      url: `http://localhost:3000/users/${userId}/routines`,
+      url: `https://wise-guy.herokuapp.com/users/${userId}/routines`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -71,7 +73,7 @@ class App extends Component {
   //!!Render JUST ONE SINGLE Routine based on routine_id in argument!!
   getOneRoutine(routineId) {
     axios({
-      url: `http://localhost:3000/routines_with_jokes/${routineId}/build`,
+      url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routineId}/build`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -87,7 +89,9 @@ class App extends Component {
   addRoutine(newRoutine) {
     // console.log("app addRoutine:", newRoutine)
     axios({
-      url: `http://localhost:3000/users/${this.state.user.id}/routines`,
+      url: `https://wise-guy.herokuapp.com/users/${
+        this.state.user.id
+      }/routines`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -103,7 +107,7 @@ class App extends Component {
   // !!Delete Routine based on routine_id as argument, getting user_id from state!!
   deleteRoutine(routineId) {
     axios({
-      url: `http://localhost:3000/users/${
+      url: `https://wise-guy.herokuapp.com/users/${
         this.state.user.id
       }/routines/${routineId}`,
       method: "DELETE",
@@ -123,7 +127,7 @@ class App extends Component {
     // console.log("app editRoutine", routine)
     // console.log("editRoutine routineId", routineId)
     axios({
-      url: `http://localhost:3000/users/${
+      url: `https://wise-guy.herokuapp.com/users/${
         this.state.user.id
       }/routines/${routineId}`,
       method: "PUT",
@@ -144,7 +148,7 @@ class App extends Component {
   // !!Get all jokes with user_id as an argument!!
   getJokes(userId) {
     axios({
-      url: `http://localhost:3000/users/${userId}/jokes/`,
+      url: `https://wise-guy.herokuapp.com/users/${userId}/jokes/`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -161,7 +165,7 @@ class App extends Component {
     // console.log("app addJoke", newJoke)
     // console.log("app addJoke", this.state.user.id)
     axios({
-      url: `http://localhost:3000/users/${this.state.user.id}/jokes`,
+      url: `https://wise-guy.herokuapp.com/users/${this.state.user.id}/jokes`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -176,7 +180,9 @@ class App extends Component {
   // !!Delete Joke based on joke_id from argument, user_id from state!!
   deleteJoke(jokeId) {
     axios({
-      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${jokeId}`,
+      url: `https://wise-guy.herokuapp.com/users/${
+        this.state.user.id
+      }/jokes/${jokeId}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -185,6 +191,7 @@ class App extends Component {
       .then(response => {
         // console.log("app deleteJoke", response)
         this.getJokes(this.state.user.id);
+        this.getRoutineJokes(this.state.oneRoutine.id);
       })
       .catch(err => console.log(`err: ${err}`));
   }
@@ -193,7 +200,9 @@ class App extends Component {
     // console.log("app editJoke", joke);
     // console.log("editJoke jokeId", jokeId);
     axios({
-      url: `http://localhost:3000/users/${this.state.user.id}/jokes/${jokeId}`,
+      url: `https://wise-guy.herokuapp.com/users/${
+        this.state.user.id
+      }/jokes/${jokeId}`,
       method: "PUT",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -203,6 +212,7 @@ class App extends Component {
       .then(response => {
         // console.log("post-edit joke state", response.data)
         this.getJokes(this.state.user.id);
+        this.getRoutineJokes(this.state.oneRoutine.id);
       })
       .catch(err => console.log(`err: ${err}`));
   }
@@ -214,7 +224,7 @@ class App extends Component {
   getRoutineJokes(routine_id) {
     console.log("getRoutineJokes routine_id argument", routine_id);
     axios({
-      url: `http://localhost:3000/routines_with_jokes/${routine_id}`,
+      url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routine_id}`,
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
       }
@@ -228,8 +238,9 @@ class App extends Component {
   // !!Adds a joke to the current routine linked to a specific routine via routine_id
   // and joke_id as arguments ((found on BuildRoutine component)!!
   addJokeToRoutine(routine_id, joke_id) {
+    // console.log("addJokeToRoutine", routine_id, joke_id);
     axios({
-      url: `http://localhost:3000/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
+      url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
       method: "POST",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -241,11 +252,33 @@ class App extends Component {
       })
       .catch(err => console.log(`err: ${err}`));
   }
+
+  postJokeToRoutine(newJoke) {
+    // console.log("app addJoke joke", newJoke);
+    // console.log("app addJoke user_id", newJoke.jokes.user_id);
+    axios({
+      url: `https://wise-guy.herokuapp.com/users/${this.state.user.id}/jokes`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${TokenService.read()}`
+      },
+      data: newJoke
+    })
+      .then(response => {
+        this.setState({ oneJoke: response.data });
+        // console.log("addJoke post oneJoke", this.state.oneJoke);
+        // console.log("addJoke post oneRoutine", this.state.user.id);
+        this.getJokes(this.state.user.id);
+        // this.getRoutineJokes(this.state.oneRoutine.id);
+        this.addJokeToRoutine(this.state.oneRoutine.id, this.state.oneJoke.id);
+      })
+      .catch(err => console.log(`err: ${err}`));
+  }
   // !!Deletes a specific joke from the current routine  via routine_id
   // and joke_id as arguments ((found on BuildRoutine component)!!
   deleteRoutineJoke(routine_id, joke_id) {
     axios({
-      url: `http://localhost:3000/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
+      url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${TokenService.read()}`
@@ -262,7 +295,7 @@ class App extends Component {
 
   register(data) {
     // console.log("app register", data)
-    axios("http://localhost:3000/users/", {
+    axios("https://wise-guy.herokuapp.com/users/", {
       method: "POST",
       data
     })
@@ -282,7 +315,7 @@ class App extends Component {
 
   login(data) {
     // console.log("app login", data)
-    axios("http://localhost:3000/users/login", {
+    axios("https://wise-guy.herokuapp.com/users/login", {
       method: "POST",
       data
     })
@@ -319,7 +352,6 @@ class App extends Component {
                 render={props => (
                   <BuildPage
                     {...props}
-                    addJoke={this.addJoke}
                     deleteJoke={this.deleteJoke}
                     editJoke={this.editJoke}
                     jokes={this.state.jokes}
@@ -328,6 +360,7 @@ class App extends Component {
                     oneRoutine={this.state.oneRoutine}
                     getOneRoutine={this.getOneRoutine}
                     getRoutineJokes={this.getRoutineJokes}
+                    postJokeToRoutine={this.postJokeToRoutine}
                     addJokeToRoutine={this.addJokeToRoutine}
                     deleteRoutineJoke={this.deleteRoutineJoke}
                   />

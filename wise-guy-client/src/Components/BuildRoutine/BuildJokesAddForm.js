@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Button, Form, Icon, Label, Modal } from "semantic-ui-react";
 
-class JokesForm extends Component {
+class BuildJokesAddForm extends Component {
   constructor(props) {
     super(props);
     this.state = { jokes: {} };
     this.submitJoke = this.submitJoke.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
+    // this.addJokeHandler = this.addJokeHandler.bind(this);
   }
 
   //grabs changes in form below, stores in joke state, also grabs user_id from props
@@ -26,11 +27,17 @@ class JokesForm extends Component {
   }
 
   submitJoke(e) {
-    // this.setState({jokes: {user_id: this.props.user.id}})
-    // console.log("Joke submitJoke", this.state)
+    // console.log("Joke submitJoke", this.state.jokes);
     e.preventDefault();
-    this.props.addJoke(this.state);
+    this.props.postJokeToRoutine(this.state);
+    // this.addJokeHandler(this.props.oneRoutine.id, this.props.oneJoke.id);
   }
+
+  // addJokeHandler(routineID, jokeID) {
+  //   console.log("first addJokeHandler", routineID);
+  //   console.log("first addJokeHandler", jokeID);
+  //   // this.props.addJokeToRoutine(routineID, jokeID);
+  // }
 
   render() {
     return (
@@ -101,4 +108,4 @@ class JokesForm extends Component {
   }
 }
 
-export default JokesForm;
+export default BuildJokesAddForm;

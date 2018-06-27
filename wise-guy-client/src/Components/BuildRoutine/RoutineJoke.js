@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
+import Paper from "@material-ui/core/Paper";
 
 class RoutineJoke extends Component {
   constructor(props) {
@@ -47,26 +48,26 @@ class RoutineJoke extends Component {
 
   render() {
     const joke = this.props.joke;
-    const id = joke.id;
+    // const id = joke.id;
     const name = joke.name;
     const joke_text = joke.joke_text;
     const estimated_length = joke.estimated_length;
     return (
-      <ul key={id.toString()}>
-        <li>Name: {name}</li>
-        <li>Joke text: {joke_text}</li>
-        <li>Estimated length: {estimated_length}</li>
+      <Paper elevation={20} className="tile">
+        <li>
+          <span>Name:</span> {name}
+        </li>
+        <li>
+          <span>Joke text:</span> {joke_text}
+        </li>
+        <li>
+          <span>Estimated length:</span> {estimated_length}
+        </li>
         <br />
-        <Button
-          color="orange"
-          icon
-          labelPosition="right"
-          onClick={this.deleteHandler}
-        >
-          <Icon name="up arrow" />
-          Remove this joke from the routine
+        <Button compact={true} color="orange" onClick={this.deleteHandler}>
+          Remove this joke
         </Button>
-      </ul>
+      </Paper>
     );
   }
 }

@@ -34,16 +34,28 @@ class EditJokeForm extends Component {
     return (
       <Modal
         trigger={
-          <Button color="brown" icon labelPosition="right">
-            <Icon name="up arrow" />
+          <Button compact={true} color="brown">
             Edit this joke
           </Button>
         }
-        closeIcon={<Button>Go back</Button>}
+        closeIcon={
+          <div>
+            <Button
+              color="green"
+              icon
+              position="left"
+              onClick={this.sendEditedJoke}
+            >
+              <Icon name="down arrow" />
+              Submit your edits!
+            </Button>
+            <Button color="grey">Never mind</Button>
+          </div>
+        }
       >
         <Modal.Header>Edit this joke</Modal.Header>
         <Modal.Description>
-          <Form onSubmit={this.sendEditedJoke}>
+          <Form>
             <Form.Field>
               <Label pointing="below" size="big">
                 Change the joke's title here
@@ -80,10 +92,6 @@ class EditJokeForm extends Component {
                 value={this.state.jokes.estimated_length}
               />
             </Form.Field>
-            <Button color="green" icon position="left">
-              <Icon name="up arrow" />
-              Submit your edited joke!
-            </Button>
           </Form>
         </Modal.Description>
       </Modal>

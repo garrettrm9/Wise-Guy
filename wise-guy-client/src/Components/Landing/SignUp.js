@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon, Form, Label } from "semantic-ui-react";
+import { Button, Icon, Form } from "semantic-ui-react";
 
 class SignUp extends Component {
   constructor(props) {

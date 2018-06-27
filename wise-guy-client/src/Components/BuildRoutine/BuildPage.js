@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BuildJokesList from "./BuildJokesList";
-import JokesForm from "../Jokes/JokesForm";
+import BuildJokesAddForm from "./BuildJokesAddForm";
 import RoutineJokesList from "./RoutineJokesList";
 import Paper from "@material-ui/core/Paper";
 import { Divider } from "semantic-ui-react";
@@ -31,7 +31,12 @@ class BuildPage extends Component {
           oneRoutine={this.props.oneRoutine}
           user={this.props.user}
         />
-        <JokesForm addJoke={this.props.addJoke} user={this.props.user} />
+        <BuildJokesAddForm
+          addJokeToRoutine={this.props.addJokeToRoutine}
+          postJokeToRoutine={this.props.postJokeToRoutine}
+          user={this.props.user}
+          oneRoutine={this.props.oneRoutine}
+        />
         <Divider hidden />
         <RoutineJokesList
           deleteRoutineJoke={this.props.deleteRoutineJoke}

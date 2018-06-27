@@ -31,7 +31,7 @@ class BuildJokesList extends Component {
             See all your jokes!
           </Button>
         }
-        closeIcon={<Button>Go back</Button>}
+        closeIcon={<Button color="grey">Never mind</Button>}
       >
         <Modal.Header>Every joke you've written!</Modal.Header>
         <Modal.Description>{jokes}</Modal.Description>

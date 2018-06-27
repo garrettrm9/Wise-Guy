@@ -31,9 +31,21 @@ p {
   font-size: 20px;
 }
 
-ul {
-  list-style-position: inside;
+/*ul {
+    list-style-position: inside;
+
   font-size: 20px;
+}*/
+
+li {
+  text-align: left;
+  font-size: 20px;
+}
+
+span {
+  /*  font-weight: bold;
+*/
+  text-decoration: underline;
 }
 
 .App {
@@ -52,6 +64,15 @@ ul {
   border: 2px black solid;
   background-color: white;
 }
+
+.tile {
+  padding: 30px;
+  border: 2px black solid;
+  background-color: white;
+}
+/*.tile-small {
+  max-width: 50%;
+}*/
 
 .preview {
   padding: 30px;

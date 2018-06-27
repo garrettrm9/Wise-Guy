@@ -37,11 +37,24 @@ class RoutinesForm extends Component {
             Add a new routine!
           </Button>
         }
-        closeIcon={<Button>Go back</Button>}
+        closeIcon={
+          <div>
+            <Button
+              color="green"
+              icon
+              labelPosition="left"
+              onClick={this.submitRoutine}
+            >
+              <Icon name="down arrow" />
+              Submit this routine!
+            </Button>
+            <Button color="grey">Never mind</Button>
+          </div>
+        }
       >
         <Modal.Header>Add a routine!</Modal.Header>
         <Modal.Description>
-          <Form onSubmit={this.submitRoutine}>
+          <Form>
             <h2>Add a routine!</h2>
             <Form.Field>
               <Label pointing="below" size="big">
@@ -67,10 +80,6 @@ class RoutinesForm extends Component {
                 value={this.state.routines.estimated_length}
               />
             </Form.Field>
-            <Button color="green" icon labelPosition="left">
-              <Icon name="up arrow" />
-              Submit this routine!
-            </Button>
           </Form>
         </Modal.Description>
       </Modal>

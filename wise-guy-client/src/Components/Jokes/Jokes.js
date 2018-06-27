@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
+import Paper from "@material-ui/core/Paper";
 import EditJokeForm from "./EditJokeForm";
 
 class Jokes extends Component {
@@ -28,16 +29,22 @@ class Jokes extends Component {
     const joke_text = joke.joke_text;
     const estimated_length = joke.estimated_length;
     return (
-      <ul>
-        <li>Name: {name}</li>
-        <li>Joke text: {joke_text}</li>
-        <li>Estimated length: {estimated_length}</li>
+      <Paper elevation={20} className="tile">
+        <li>
+          <span>Name:</span> {name}
+        </li>
+        <li>
+          <span>Joke text:</span> {joke_text}
+        </li>
+        <li>
+          <span>Estimated length:</span> {estimated_length}
+        </li>
         <br />
-        <Button color="black" onClick={this.deleteHandler}>
+        <Button compact={true} color="black" onClick={this.deleteHandler}>
           Delete this joke
         </Button>
         <EditJokeForm joke={joke} editJoke={this.props.editJoke} />
-      </ul>
+      </Paper>
     );
   }
 }

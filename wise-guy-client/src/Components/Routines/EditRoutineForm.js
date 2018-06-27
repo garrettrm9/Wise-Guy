@@ -32,12 +32,29 @@ class EditRoutineForm extends Component {
     const estimated_length = routine.estimated_length;
     return (
       <Modal
-        trigger={<Button color="grey">Edit this routine</Button>}
-        closeIcon={<Button>Go back</Button>}
+        trigger={
+          <Button compact={true} color="grey">
+            Edit this routine
+          </Button>
+        }
+        closeIcon={
+          <div>
+            <Button
+              color="green"
+              icon
+              position="left"
+              onClick={this.sendEditedRoutine}
+            >
+              <Icon name="down arrow" />
+              Submit your edits!
+            </Button>
+            <Button color="grey">Never mind</Button>
+          </div>
+        }
       >
         <Modal.Header>Edit this routine</Modal.Header>
         <Modal.Description>
-          <Form onSubmit={this.sendEditedRoutine}>
+          <Form>
             <Form.Field>
               <Label pointing="below" size="big">
                 Change the routine's title here
@@ -62,10 +79,6 @@ class EditRoutineForm extends Component {
                 value={this.state.routines.estimated_length}
               />
             </Form.Field>
-            <Button color="green" icon position="left">
-              <Icon name="up arrow" />
-              Submit your edited routine!
-            </Button>
           </Form>
         </Modal.Description>
       </Modal>

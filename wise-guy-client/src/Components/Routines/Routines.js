@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button, Icon } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
+import Paper from "@material-ui/core/Paper";
 import EditRoutineForm from "./EditRoutineForm";
 
 class Routines extends Component {
@@ -29,11 +30,15 @@ class Routines extends Component {
     const name = routine.name;
     const estimated_length = routine.estimated_length;
     return (
-      <ul>
-        <li>Routine name: {name}</li>
-        <li>Estimated length: {estimated_length}</li>
+      <Paper elevation={20} className="tile">
+        <li>
+          <span>Routine name:</span> {name}
+        </li>
+        <li>
+          <span>Estimated length:</span> {estimated_length}
+        </li>
         <br />
-        <Button color="red" onClick={this.deleteHandler}>
+        <Button compact={true} color="red" onClick={this.deleteHandler}>
           Delete this routine
         </Button>
         <EditRoutineForm
@@ -41,12 +46,11 @@ class Routines extends Component {
           editRoutine={this.props.editRoutine}
         />
         <Link to={`/routines/${id}`}>
-          <Button color="black" icon labelPosition="right">
-            <Icon name="up arrow" />
-            Add jokes to this routine
+          <Button compact={true} color="black">
+            Build this routine
           </Button>
         </Link>
-      </ul>
+      </Paper>
     );
   }
 }
