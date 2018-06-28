@@ -38,7 +38,12 @@ class Routines extends Component {
           <span>Estimated length:</span> {estimated_length}
         </li>
         <br />
-        <Button compact={true} color="red" onClick={this.deleteHandler}>
+        <Button
+          id="button"
+          compact={true}
+          color="red"
+          onClick={this.deleteHandler}
+        >
           Delete this routine
         </Button>
         <EditRoutineForm
@@ -46,7 +51,7 @@ class Routines extends Component {
           editRoutine={this.props.editRoutine}
         />
         <Link to={`/routines/${id}`}>
-          <Button compact={true} color="black">
+          <Button id="button" compact={true} color="black">
             Build this routine
           </Button>
         </Link>

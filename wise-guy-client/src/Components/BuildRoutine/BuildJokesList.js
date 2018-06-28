@@ -27,7 +27,7 @@ class BuildJokesList extends Component {
     return (
       <Modal
         trigger={
-          <Button circular size="large" color="brown">
+          <Button id="button" circular size="large" color="brown">
             See all your jokes!
           </Button>
         }

@@ -40,7 +40,12 @@ class Jokes extends Component {
           <span>Estimated length:</span> {estimated_length}
         </li>
         <br />
-        <Button compact={true} color="black" onClick={this.deleteHandler}>
+        <Button
+          id="button"
+          compact={true}
+          color="black"
+          onClick={this.deleteHandler}
+        >
           Delete this joke
         </Button>
         <EditJokeForm joke={joke} editJoke={this.props.editJoke} />

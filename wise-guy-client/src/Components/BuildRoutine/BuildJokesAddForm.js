@@ -43,7 +43,7 @@ class BuildJokesAddForm extends Component {
     return (
       <Modal
         trigger={
-          <Button circular size="large" color="green">
+          <Button id="button" circular size="large" color="green">
             Add a new joke!
           </Button>
         }

@@ -46,11 +46,21 @@ class BuildJokes extends Component {
           <span>Estimated length:</span> {estimated_length}
         </li>
         <br />
-        <Button compact={true} color="red" onClick={this.deleteHandler}>
+        <Button
+          id="button"
+          compact={true}
+          color="red"
+          onClick={this.deleteHandler}
+        >
           Delete this joke
         </Button>
         <BuildJokesEditForm joke={joke} editJoke={this.props.editJoke} />
-        <Button compact={true} color="yellow" onClick={this.addJokeHandler}>
+        <Button
+          id="button"
+          compact={true}
+          color="yellow"
+          onClick={this.addJokeHandler}
+        >
           Add to the routine
         </Button>
         <Divider />

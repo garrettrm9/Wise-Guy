@@ -3,6 +3,10 @@ font-family: 'Lobster', cursive;
 font-family: 'Pacifico', cursive;
 font-family: 'Gloria Hallelujah', cursive;*/
 
+#button {
+  border: 5px solid white;
+}
+
 body {
   background-image: url("https://filiptester.files.wordpress.com/2015/06/background.jpg?w=1920&h=1200&crop=1");
   background-size: 100% 100%;
@@ -70,9 +74,6 @@ span {
   border: 2px black solid;
   background-color: white;
 }
-/*.tile-small {
-  max-width: 50%;
-}*/
 
 .preview {
   padding: 30px;

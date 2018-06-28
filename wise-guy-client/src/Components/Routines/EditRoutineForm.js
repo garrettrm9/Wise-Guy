@@ -33,7 +33,7 @@ class EditRoutineForm extends Component {
     return (
       <Modal
         trigger={
-          <Button compact={true} color="grey">
+          <Button id="button" compact={true} color="grey">
             Edit this routine
           </Button>
         }

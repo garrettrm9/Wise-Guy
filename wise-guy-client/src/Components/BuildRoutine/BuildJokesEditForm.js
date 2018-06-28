@@ -34,7 +34,7 @@ class BuildJokesEditForm extends Component {
     return (
       <Modal
         trigger={
-          <Button compact={true} color="brown">
+          <Button id="button" compact={true} color="brown">
             Edit this joke
           </Button>
         }
