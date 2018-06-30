@@ -364,6 +364,7 @@ class App extends Component {
                     postJokeToRoutine={this.postJokeToRoutine}
                     addJokeToRoutine={this.addJokeToRoutine}
                     deleteRoutineJoke={this.deleteRoutineJoke}
+                    logout={this.logout}
                   />
                 )}
               />
@@ -378,6 +379,7 @@ class App extends Component {
                     editRoutine={this.editRoutine}
                     routines={this.state.routines}
                     user={this.state.user}
+                    logout={this.logout}
                   />
                 )}
               />
@@ -392,6 +394,7 @@ class App extends Component {
                     editJoke={this.editJoke}
                     jokes={this.state.jokes}
                     user={this.state.user}
+                    logout={this.logout}
                   />
                 )}
               />
@@ -399,7 +402,11 @@ class App extends Component {
                 exact
                 path="/profile"
                 render={props => (
-                  <ProfilePage {...props} user={this.state.user} />
+                  <ProfilePage
+                    {...props}
+                    user={this.state.user}
+                    logout={this.logout}
+                  />
                 )}
               />
               <Route path="/" render={() => <Redirect to="/profile" />} />

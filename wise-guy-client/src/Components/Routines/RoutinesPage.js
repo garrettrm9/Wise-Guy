@@ -10,7 +10,7 @@ class RoutinesPage extends Component {
     const firstName = this.props.user.first_name;
     return (
       <Paper elevation={20} className="container">
-        <Nav />
+        <Nav user={this.props.user} logout={this.props.logout} />
         <h2 className="header">
           These perfect routines were written by {firstName}:
         </h2>

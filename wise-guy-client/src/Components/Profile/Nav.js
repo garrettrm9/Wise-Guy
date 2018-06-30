@@ -16,6 +16,11 @@ class Nav extends Component {
           <Dropdown.Item>
             <Link to="/routines">Routines</Link>
           </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/landing" onClick={this.props.logout}>
+              Sign out
+            </Link>
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );
