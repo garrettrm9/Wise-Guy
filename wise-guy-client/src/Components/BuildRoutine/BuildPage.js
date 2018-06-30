@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Nav from "../Profile/Nav";
 import BuildJokesList from "./BuildJokesList";
 import BuildJokesAddForm from "./BuildJokesAddForm";
 import RoutineJokesList from "./RoutineJokesList";
@@ -21,6 +22,7 @@ class BuildPage extends Component {
     const name = this.props.oneRoutine.name;
     return (
       <Paper elevation={20} className="container">
+        <Nav />
         <h1 className="build_greeting">This routine is called '{name}'!</h1>
         <Divider hidden />
         <BuildJokesList

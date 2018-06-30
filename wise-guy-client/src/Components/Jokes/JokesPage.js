@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Nav from '../Profile/Nav'
+import Nav from "../Profile/Nav";
 import JokesList from "./JokesList";
 import JokesForm from "./JokesForm";
 import Paper from "@material-ui/core/Paper";
@@ -10,6 +10,7 @@ class JokesPage extends Component {
     const firstName = this.props.user.first_name;
     return (
       <Paper elevation={20} className="container">
+        <Nav />
         <h2>These ground-breaking jokes belong to {firstName}:</h2>
         <Divider hidden />
         <JokesForm addJoke={this.props.addJoke} user={this.props.user} />

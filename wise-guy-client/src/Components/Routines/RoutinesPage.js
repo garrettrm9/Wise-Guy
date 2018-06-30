@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Nav from '../Profile/Nav'
+import Nav from "../Profile/Nav";
 import RoutinesList from "./RoutinesList";
 import RoutinesForm from "./RoutinesForm";
 import Paper from "@material-ui/core/Paper";
@@ -10,6 +10,7 @@ class RoutinesPage extends Component {
     const firstName = this.props.user.first_name;
     return (
       <Paper elevation={20} className="container">
+        <Nav />
         <h2 className="header">
           These perfect routines were written by {firstName}:
         </h2>

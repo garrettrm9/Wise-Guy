@@ -7,6 +7,20 @@ font-family: 'Gloria Hallelujah', cursive;*/
   border: 5px solid white;
 }
 
+.nav_bar_container {
+  font-size: 25px;
+  border: 1px black solid;
+  padding: 5px;
+  background-color: silver;
+  font-family: "Lobster", cursive;
+  justify-content: left;
+}
+
+a {
+  font-size: 20px;
+  color: black;
+}
+
 body {
   background-image: url("https://filiptester.files.wordpress.com/2015/06/background.jpg?w=1920&h=1200&crop=1");
   background-size: 100% 100%;

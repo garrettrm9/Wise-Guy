@@ -14,6 +14,7 @@ import BuildPage from "./Components/BuildRoutine/BuildPage";
 import Landing from "./Components/Landing/Landing";
 import TokenService from "./services/TokenService";
 import Register from "./Components/Landing/Register";
+
 // import CssBaseline from "@material-ui/core/CssBaseline";
 
 class App extends Component {

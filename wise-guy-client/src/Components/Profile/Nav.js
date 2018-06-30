@@ -1,18 +1,23 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Dropdown } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 class Nav extends Component {
   render() {
-    const userName = this.props.user.email;
-    const firstName = this.props.user.first_name;
-    const lastName = this.props.user.last_name;
     return (
-      <div className="nav_bar">
-        <h3>
-          The hilarious comedy of {firstName} {lastName}
-        </h3>
-        <button onClick={this.props.logout}>Sign out of {userName}</button>
-      </div>
+      <Dropdown text="Menu" className="nav_bar_container">
+        <Dropdown.Menu>
+          <Dropdown.Item>
+            <Link to="/profile">Profile</Link>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/jokes">Jokes</Link>
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <Link to="/routines">Routines</Link>
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
 }
