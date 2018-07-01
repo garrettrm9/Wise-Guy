@@ -5,11 +5,19 @@ class User < ApplicationRecord
 
   PASSWORD_LENGTH = (1..25)
   EMAIL_LENGTH = (1..35)
+  FnAME_LENGTH = (1..20)
+  LnAME_LENGTH = (1..30)
 
-  validates_presence_of :email
-  validates :email, length: EMAIL_LENGTH, uniqueness: true
+  # validates_presence_of :email
+  validates :email, length: EMAIL_LENGTH, uniqueness: true, presence: true
 
-  validates :password, length: PASSWORD_LENGTH, allow_nil: true
+  validates :password, length: PASSWORD_LENGTH, presence: true
+
+  validates :first_name, length: FnAME_LENGTH, presence: true
+
+  validates :last_name, length: LnAME_LENGTH, presence: true
+    
+  # end
 
   attr_reader :password
 

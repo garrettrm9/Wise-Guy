@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(first_name: "Garrett", last_name: "Rasko-Martinis", email: "garrett@garrett.com", password_digest: "garrett")
-user2 = User.create(first_name: "Tom", last_name: "Coughlin", email: "tom@tom.com", password_digest: "tom")
-user3 = User.create(first_name: "Bryan", last_name: "Miller", email: "bryan@bryan.com", password_digest: "bryan")
-user4 = User.create(first_name: "Kevin", last_name: "Lee", email: "kevin@kevin.com", password_digest: "kevin")
+user1 = User.create(first_name: "Garrett", last_name: "Rasko-Martinis", password_digest: "garrett")
+user2 = User.create(first_name: "Tom", last_name: "Coughlin", password_digest: "tom")
+user3 = User.create(first_name: "Bryan", last_name: "Miller", password_digest: "bryan")
+user4 = User.create(first_name: "Kevin", last_name: "Lee", password_digest: "kevin")
 
 joke1 = Joke.create(name: "Good joke", joke_text: "This IS a GOOD joke", user_id: 1, estimated_length: "10")
 joke2 = Joke.create(name: "Bad joke", joke_text: "This IS a BAD joke", user_id: 2, estimated_length: "10")
