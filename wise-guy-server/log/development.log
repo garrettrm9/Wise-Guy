@@ -33812,3 +33812,26 @@ Completed 422 Unprocessable Entity in 12ms (ActiveRecord: 5.6ms)
 ActiveRecord::RecordInvalid (Validation failed: Joke has already been taken):
   
 app/controllers/routine_with_jokes_controller.rb:18:in `create'
+Started POST "/users/login" for ::1 at 2018-06-30 20:31:07 -0400
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"garrett9@garrett.com", "password"=>"[FILTERED]", "user"=>{"email"=>"garrett9@garrett.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "garrett9@garrett.com"], ["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 0.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/5/routines" for ::1 at 2018-06-30 20:31:07 -0400
+Processing by RoutinesController#index as HTML
+Started GET "/users/5/jokes/" for ::1 at 2018-06-30 20:31:07 -0400
+  Parameters: {"id"=>"5"}
+Processing by JokesController#show as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRoutine Load (1.8ms)[0m  [1m[34mSELECT "routines".* FROM "routines" WHERE "routines"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 40ms (Views: 18.9ms | ActiveRecord: 13.5ms)
+
+
+  [1m[36mJoke Load (17.7ms)[0m  [1m[34mSELECT "jokes".* FROM "jokes" WHERE "jokes"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 65ms (Views: 18.1ms | ActiveRecord: 34.9ms)
+
+
