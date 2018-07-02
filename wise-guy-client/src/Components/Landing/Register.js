@@ -48,6 +48,7 @@ class Register extends Component {
               placeholder="First name"
               name="first_name"
               value={this.state.first_name}
+              autoComplete="off"
             />
             <input
               onChange={this.changeHandler}
@@ -55,6 +56,7 @@ class Register extends Component {
               placeholder="Last name"
               name="last_name"
               value={this.state.last_name}
+              autoComplete="off"
             />
             <input
               onChange={this.changeHandler}
@@ -62,6 +64,7 @@ class Register extends Component {
               placeholder="Email"
               name="email"
               value={this.state.email}
+              autoComplete="off"
             />
             <input
               onChange={this.changeHandler}
@@ -69,6 +72,7 @@ class Register extends Component {
               placeholder="Password"
               name="password"
               value={this.state.password}
+              autoComplete="off"
             />
           </Form.Field>
           <br />

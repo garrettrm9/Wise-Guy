@@ -39,6 +39,7 @@ class SignUp extends Component {
             placeholder="Email"
             name="email"
             value={this.state.email}
+            autoComplete="off"
           />
         </Form.Field>
         <Form.Field>
@@ -48,6 +49,7 @@ class SignUp extends Component {
             placeholder="Password"
             name="password"
             value={this.state.password}
+            autoComplete="off"
           />
         </Form.Field>
         <Button color="green" icon labelPosition="left">

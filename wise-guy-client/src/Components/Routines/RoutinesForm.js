@@ -66,6 +66,7 @@ class RoutinesForm extends Component {
                 placeholder="Routine name"
                 name="name"
                 value={this.state.routines.name}
+                autoComplete="off"
               />
             </Form.Field>
             <Form.Field>
@@ -78,6 +79,7 @@ class RoutinesForm extends Component {
                 placeholder="Estimated length"
                 name="estimated_length"
                 value={this.state.routines.estimated_length}
+                autoComplete="off"
               />
             </Form.Field>
           </Form>

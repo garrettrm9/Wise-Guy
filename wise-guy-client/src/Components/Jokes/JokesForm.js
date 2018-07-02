@@ -68,6 +68,7 @@ class JokesForm extends Component {
                 placeholder="Joke name"
                 name="name"
                 value={this.state.jokes.name}
+                autoComplete="off"
               />
             </Form.Field>
             <Form.Field>
@@ -80,6 +81,7 @@ class JokesForm extends Component {
                 placeholder="Joke text"
                 name="joke_text"
                 value={this.state.jokes.joke_text}
+                autoComplete="off"
               />
             </Form.Field>
             <Form.Field>
@@ -92,6 +94,7 @@ class JokesForm extends Component {
                 placeholder="Joke length"
                 name="estimated_length"
                 value={this.state.jokes.estimated_length}
+                autoComplete="off"
               />
             </Form.Field>
           </Form>

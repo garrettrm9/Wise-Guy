@@ -63,6 +63,7 @@ class BuildJokesEditForm extends Component {
                 placeholder={name}
                 name="name"
                 value={this.state.jokes.name}
+                autoComplete="off"
               />
             </Form.Field>
             <Form.Field>
@@ -75,6 +76,7 @@ class BuildJokesEditForm extends Component {
                 placeholder={joke_text}
                 name="joke_text"
                 value={this.state.jokes.joke_text}
+                autoComplete="off"
               />
             </Form.Field>
             <Form.Field>
@@ -87,6 +89,7 @@ class BuildJokesEditForm extends Component {
                 placeholder={estimated_length}
                 name="estimated_length"
                 value={this.state.jokes.estimated_length}
+                autoComplete="off"
               />
             </Form.Field>
           </Form>
