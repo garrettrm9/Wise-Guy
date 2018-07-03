@@ -61,7 +61,7 @@ class RoutineJoke extends Component {
           <span>Joke text:</span> {joke_text}
         </li>
         <li>
-          <span>Estimated length:</span> {estimated_length}
+          <span>Estimated length:</span> {estimated_length} minutes
         </li>
         <br />
         <Button compact={true} color="orange" onClick={this.deleteHandler}>

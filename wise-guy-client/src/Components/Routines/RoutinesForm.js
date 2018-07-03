@@ -71,7 +71,7 @@ class RoutinesForm extends Component {
             </Form.Field>
             <Form.Field>
               <Label pointing="below" size="big">
-                How long is this routine?
+                How many minutes does this routine take?
               </Label>
               <input
                 onChange={this.changeHandler}

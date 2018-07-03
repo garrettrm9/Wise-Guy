@@ -86,7 +86,7 @@ class JokesForm extends Component {
             </Form.Field>
             <Form.Field>
               <Label pointing="below" size="big">
-                How long is the joke?
+                How many minutes does this joke take?
               </Label>
               <input
                 onChange={this.changeHandler}

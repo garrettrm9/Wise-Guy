@@ -3,4 +3,5 @@ class Routine < ApplicationRecord
   has_many :jokes, through: :routine_with_jokes
   # belongs_to :users  
   validates_uniqueness_of :name
+  validates :estimated_length, numericality: true
 end

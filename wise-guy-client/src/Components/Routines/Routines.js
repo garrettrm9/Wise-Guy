@@ -35,7 +35,7 @@ class Routines extends Component {
           <span>Routine name:</span> {name}
         </li>
         <li>
-          <span>Estimated length:</span> {estimated_length}
+          <span>Estimated length:</span> {estimated_length} minutes
         </li>
         <br />
         <Button

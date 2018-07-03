@@ -15,8 +15,6 @@ import Landing from "./Components/Landing/Landing";
 import TokenService from "./services/TokenService";
 import Register from "./Components/Landing/Register";
 
-// import CssBaseline from "@material-ui/core/CssBaseline";
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -163,7 +161,7 @@ class App extends Component {
   }
   // !!Post new Routine with user-id from state, new joke data from newJoke argument!!
   addJoke(newJoke) {
-    // console.log("app addJoke", newJoke)
+    console.log("app addJoke", newJoke);
     // console.log("app addJoke", this.state.user.id)
     axios({
       url: `https://wise-guy.herokuapp.com/users/${this.state.user.id}/jokes`,
