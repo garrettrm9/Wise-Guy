@@ -100,7 +100,16 @@ class App extends Component {
       .then(response => {
         this.getRoutines(this.state.user.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => {
+        console.log(`err: ${err}`);
+        const errorValues = Object.values(err);
+        console.log("addRoutine errorCatch", errorValues[2].status);
+        if (errorValues[2].status === 422) {
+          alert(
+            "A routine with that name already exists! Stop stealing from yourself!"
+          );
+        }
+      });
   }
 
   // !!Delete Routine based on routine_id as argument, getting user_id from state!!
@@ -174,7 +183,16 @@ class App extends Component {
       .then(response => {
         this.getJokes(this.state.user.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => {
+        console.log(`err: ${err}`);
+        const errorValues = Object.values(err);
+        console.log("addJoke errorCatch", errorValues[2].status);
+        if (errorValues[2].status === 422) {
+          alert(
+            "A joke with that name already exists! Stop stealing from yourself!"
+          );
+        }
+      });
   }
   // !!Delete Joke based on joke_id from argument, user_id from state!!
   deleteJoke(jokeId) {
@@ -249,7 +267,14 @@ class App extends Component {
         // console.log("addJokeToRoutine", response.data)
         this.getRoutineJokes(this.state.oneRoutine.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => {
+        console.log(`err: ${err}`);
+        const errorValues = Object.values(err);
+        console.log("addJokeToRoutine errorCatch", errorValues[2].status);
+        if (errorValues[2].status === 422) {
+          alert("This joke is already part of this routine!");
+        }
+      });
   }
 
   postJokeToRoutine(newJoke) {
@@ -271,7 +296,16 @@ class App extends Component {
         // this.getRoutineJokes(this.state.oneRoutine.id);
         this.addJokeToRoutine(this.state.oneRoutine.id, this.state.oneJoke.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => {
+        console.log(`err: ${err}`);
+        const errorValues = Object.values(err);
+        console.log("postJokeToRoutine errorCatch", errorValues[2].status);
+        if (errorValues[2].status === 422) {
+          alert(
+            "A joke with that name already exists! Stop stealing from yourself!"
+          );
+        }
+      });
   }
   // !!Deletes a specific joke from the current routine  via routine_id
   // and joke_id as arguments ((found on BuildRoutine component)!!
@@ -309,7 +343,14 @@ class App extends Component {
         this.getRoutines(this.state.user.id);
         this.getJokes(this.state.user.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => {
+        console.log(`err: ${err}`);
+        const errorValues = Object.values(err);
+        console.log("register errorCatch", errorValues[2].status);
+        if (errorValues[2].status === 401) {
+          alert("Sorry, that email is already taken. Try another!");
+        }
+      });
   }
 
   login(data) {
@@ -329,7 +370,16 @@ class App extends Component {
         this.getRoutines(this.state.user.id);
         this.getJokes(this.state.user.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => {
+        console.log(`err: ${err}`);
+        const errorValues = Object.values(err);
+        console.log("login errorCatch", errorValues[2].status);
+        if (errorValues[2].status === 401) {
+          alert(
+            "Login failed! Incorrect credentials, or user does no exist. Woah! Trippy"
+          );
+        }
+      });
   }
 
   logout(e) {
