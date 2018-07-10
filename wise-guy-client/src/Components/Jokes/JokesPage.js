@@ -10,7 +10,9 @@ class JokesPage extends Component {
     const firstName = this.props.user.first_name;
     return (
       <Paper elevation={20} className="container">
-        <Nav user={this.props.user} logout={this.props.logout} />
+        <div className="nav_bar_container">
+          <Nav user={this.props.user} logout={this.props.logout} />
+        </div>
         <h2>These ground-breaking jokes belong to {firstName}:</h2>
         <Divider hidden />
         <JokesForm addJoke={this.props.addJoke} user={this.props.user} />

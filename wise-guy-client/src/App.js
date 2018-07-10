@@ -1,18 +1,19 @@
 import React, { Component } from "react";
+import "./App.css";
+// import Responsive from "react-responsive";
+import axios from "axios";
+import TokenService from "./services/TokenService";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
-import "./App.css";
-import axios from "axios";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import RoutinesPage from "./Components/Routines/RoutinesPage";
 import JokesPage from "./Components/Jokes/JokesPage";
 import BuildPage from "./Components/BuildRoutine/BuildPage";
 import Landing from "./Components/Landing/Landing";
-import TokenService from "./services/TokenService";
 import Register from "./Components/Landing/Register";
 
 class App extends Component {
@@ -63,14 +64,13 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("getRoutines:", response.data);
         this.setState({ routines: response.data });
-        // console.log("state, routines:", this.state.routines);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`getRoutines err: ${err}`));
   }
   //!!Render JUST ONE SINGLE Routine based on routine_id in argument!!
   getOneRoutine(routineId) {
+    console.log("getOneRoutine");
     axios({
       url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routineId}/build`,
       headers: {
@@ -78,15 +78,12 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("getOneRoutine:", response.data);
         this.setState({ oneRoutine: response.data });
-        // console.log("state, oneRoutine:", this.state.oneRoutine);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`getOneRoutine err: ${err}`));
   }
   // !!Post new Routine with user_id from state and newRoutine data as argument!!
   addRoutine(newRoutine) {
-    // console.log("app addRoutine:", newRoutine)
     axios({
       url: `https://wise-guy.herokuapp.com/users/${
         this.state.user.id
@@ -101,12 +98,12 @@ class App extends Component {
         this.getRoutines(this.state.user.id);
       })
       .catch(err => {
-        console.log(`err: ${err}`);
+        console.log(`addRoutine err: ${err}`);
         const errorValues = Object.values(err);
         console.log("addRoutine errorCatch", errorValues[2].status);
         if (errorValues[2].status === 422) {
           alert(
-            "A routine with that name already exists! Stop stealing from yourself!"
+            "Please use a real number for the estimated number of minutes!"
           );
         }
       });
@@ -124,16 +121,13 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("app deleteRoutine", response)
         this.getRoutines(this.state.user.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`deleteRoutine err: ${err}`));
   }
   // !!Edit Routine based on routine_id in argument, edited body from routine argument,
   // and user_id from state!!
   editRoutine(routine, routineId) {
-    // console.log("app editRoutine", routine)
-    // console.log("editRoutine routineId", routineId)
     axios({
       url: `https://wise-guy.herokuapp.com/users/${
         this.state.user.id
@@ -145,10 +139,9 @@ class App extends Component {
       data: routine
     })
       .then(response => {
-        // console.log("post-edit routine state", response.data)
         this.getRoutines(this.state.user.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`editRoutine err: ${err}`));
   }
 
   // !!JOKES, JOKES, JOKES!!
@@ -162,16 +155,12 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("getJokes:", response.data);
         this.setState({ jokes: response.data });
-        // console.log("state, jokes:", this.state.jokes);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`getJokes err: ${err}`));
   }
   // !!Post new Routine with user-id from state, new joke data from newJoke argument!!
   addJoke(newJoke) {
-    console.log("app addJoke", newJoke);
-    // console.log("app addJoke", this.state.user.id)
     axios({
       url: `https://wise-guy.herokuapp.com/users/${this.state.user.id}/jokes`,
       method: "POST",
@@ -184,12 +173,12 @@ class App extends Component {
         this.getJokes(this.state.user.id);
       })
       .catch(err => {
-        console.log(`err: ${err}`);
+        console.log(`addJoke err: ${err}`);
         const errorValues = Object.values(err);
         console.log("addJoke errorCatch", errorValues[2].status);
         if (errorValues[2].status === 422) {
           alert(
-            "A joke with that name already exists! Stop stealing from yourself!"
+            "Please use a real number for the estimated number of minutes!"
           );
         }
       });
@@ -206,16 +195,13 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("app deleteJoke", response)
         this.getJokes(this.state.user.id);
         this.getRoutineJokes(this.state.oneRoutine.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`deleteJoke err: ${err}`));
   }
   // !!Edit Joke based on joke form data and jokeId arguments, user_id from state!!
   editJoke(joke, jokeId) {
-    // console.log("app editJoke", joke);
-    // console.log("editJoke jokeId", jokeId);
     axios({
       url: `https://wise-guy.herokuapp.com/users/${
         this.state.user.id
@@ -227,11 +213,10 @@ class App extends Component {
       data: joke
     })
       .then(response => {
-        // console.log("post-edit joke state", response.data)
         this.getJokes(this.state.user.id);
         this.getRoutineJokes(this.state.oneRoutine.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`editJoke err: ${err}`));
   }
 
   // !!ROUTINES w/JOKES, ROUTINES w/JOKES, ROUTINES w/JOKES!!
@@ -239,7 +224,7 @@ class App extends Component {
   // !!Renders all jokes linked to a specific routine via routine_id as argument
   // (found on BuildPage component)!!
   getRoutineJokes(routine_id) {
-    console.log("getRoutineJokes routine_id argument", routine_id);
+    console.log("getRoutineJokes");
     axios({
       url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routine_id}`,
       headers: {
@@ -248,14 +233,12 @@ class App extends Component {
     })
       .then(response => {
         this.setState({ routineJokes: response.data });
-        console.log("getRoutineJokes", this.state.routineJokes);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`getRoutineJokes err: ${err}`));
   }
   // !!Adds a joke to the current routine linked to a specific routine via routine_id
   // and joke_id as arguments ((found on BuildRoutine component)!!
   addJokeToRoutine(routine_id, joke_id) {
-    // console.log("addJokeToRoutine", routine_id, joke_id);
     axios({
       url: `https://wise-guy.herokuapp.com/routines_with_jokes/${routine_id}/jokes/${joke_id}`,
       method: "POST",
@@ -264,11 +247,10 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("addJokeToRoutine", response.data)
         this.getRoutineJokes(this.state.oneRoutine.id);
       })
       .catch(err => {
-        console.log(`err: ${err}`);
+        console.log(`addJokeToRoutine err: ${err}`);
         const errorValues = Object.values(err);
         console.log("addJokeToRoutine errorCatch", errorValues[2].status);
         if (errorValues[2].status === 422) {
@@ -278,8 +260,6 @@ class App extends Component {
   }
 
   postJokeToRoutine(newJoke) {
-    // console.log("app addJoke joke", newJoke);
-    // console.log("app addJoke user_id", newJoke.jokes.user_id);
     axios({
       url: `https://wise-guy.herokuapp.com/users/${this.state.user.id}/jokes`,
       method: "POST",
@@ -290,19 +270,16 @@ class App extends Component {
     })
       .then(response => {
         this.setState({ oneJoke: response.data });
-        // console.log("addJoke post oneJoke", this.state.oneJoke);
-        // console.log("addJoke post oneRoutine", this.state.user.id);
         this.getJokes(this.state.user.id);
-        // this.getRoutineJokes(this.state.oneRoutine.id);
         this.addJokeToRoutine(this.state.oneRoutine.id, this.state.oneJoke.id);
       })
       .catch(err => {
-        console.log(`err: ${err}`);
+        console.log(`postJokeToRoutine err: ${err}`);
         const errorValues = Object.values(err);
         console.log("postJokeToRoutine errorCatch", errorValues[2].status);
         if (errorValues[2].status === 422) {
           alert(
-            "A joke with that name already exists! Stop stealing from yourself!"
+            "Please use a real number for the estimated number of minutes!"
           );
         }
       });
@@ -318,33 +295,29 @@ class App extends Component {
       }
     })
       .then(response => {
-        // console.log("deleteRoutineJoke", response.data);
         this.getRoutineJokes(this.state.oneRoutine.id);
       })
-      .catch(err => console.log(`err: ${err}`));
+      .catch(err => console.log(`deleteRoutineJoke err: ${err}`));
   }
 
   // !!!AUTH AUTH AUTH!!!
 
   register(data) {
-    // console.log("app register", data)
     axios("https://wise-guy.herokuapp.com/users/", {
       method: "POST",
       data
     })
       .then(resp => {
         TokenService.save(resp.data.token);
-        // console.log("register", resp.data)
         this.setState({
           user: resp.data.user,
           isLoggedIn: true
         });
-        // console.log("register", this.state.user)
         this.getRoutines(this.state.user.id);
         this.getJokes(this.state.user.id);
       })
       .catch(err => {
-        console.log(`err: ${err}`);
+        console.log(`register err: ${err}`);
         const errorValues = Object.values(err);
         console.log("register errorCatch", errorValues[2].status);
         if (errorValues[2].status === 401) {
@@ -354,24 +327,21 @@ class App extends Component {
   }
 
   login(data) {
-    // console.log("app login", data)
     axios("https://wise-guy.herokuapp.com/users/login", {
       method: "POST",
       data
     })
       .then(resp => {
         TokenService.save(resp.data.token);
-        // console.log("login", resp.data.user)
         this.setState({
           user: resp.data.user,
           isLoggedIn: true
         });
-        // console.log("login", this.state.user)
         this.getRoutines(this.state.user.id);
         this.getJokes(this.state.user.id);
       })
       .catch(err => {
-        console.log(`err: ${err}`);
+        console.log(`login err: ${err}`);
         const errorValues = Object.values(err);
         console.log("login errorCatch", errorValues[2].status);
         if (errorValues[2].status === 401) {

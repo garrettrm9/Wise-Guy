@@ -1,7 +1,9 @@
 #Known issues/needed updates
 
-1. Annotate!!!!
+1. Stylized alert boxes!!!
 
+* Not using integer for estimated lengths triggers same 422 error, and thus alert, as attempting to create new joke/routine with duplicated name
+* Annotate!!!!
 * Make code DRY - re-use form components, nest superfluous components' modals in their parent
 * Add most recent joke/routine to their preview components on ProfilePage
 * Display routine's total run time on buildPage and POSSIBLY in routineList on routinePage as well

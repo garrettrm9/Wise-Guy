@@ -12,7 +12,7 @@ class BuildPage extends Component {
     this.state = { routines: {}, id: this.props.match.params.id };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // console.log("buildpage this.state.id", this.state.id);
     this.props.getOneRoutine(this.state.id);
     this.props.getRoutineJokes(this.state.id);
@@ -22,7 +22,9 @@ class BuildPage extends Component {
     const name = this.props.oneRoutine.name;
     return (
       <Paper elevation={20} className="container">
-        <Nav user={this.props.user} logout={this.props.logout} />
+        <div className="nav_bar_container">
+          <Nav user={this.props.user} logout={this.props.logout} />
+        </div>
         <h1 className="build_greeting">This routine is called '{name}'!</h1>
         <Divider hidden />
         <BuildJokesList

@@ -12,9 +12,6 @@ class JokesForm extends Component {
   //grabs changes in form below, stores in joke state, also grabs user_id from props
   //and adds to joke state, fulfilling all params for POST request
   changeHandler(e) {
-    // console.log("submitNewJoke", this.props.user.id)
-    // console.log("Joke changeHandler", this.state)
-    // this.setState({jokes: {user_id: this.props.user.id}})
     e.preventDefault();
     const key = e.target.name;
     const value = e.target.value;
@@ -26,15 +23,15 @@ class JokesForm extends Component {
   }
 
   submitJoke(e) {
-    // this.setState({jokes: {user_id: this.props.user.id}})
-    // console.log("Joke submitJoke", this.state)
     e.preventDefault();
+    // console.log("JokesForm", this.state);
     this.props.addJoke(this.state);
   }
 
   render() {
     return (
       <Modal
+        centered
         trigger={
           <Button circular size="large" color="green">
             Add a new joke!

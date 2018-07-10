@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class Nav extends Component {
   render() {
     return (
-      <Dropdown text="Menu" className="nav_bar_container">
+      <Dropdown text="Menu">
         <Dropdown.Menu>
           <Dropdown.Item>
             <Link to="/profile">Profile</Link>

@@ -7,9 +7,9 @@ class RoutineJokesList extends Component {
     this.renderJokes = this.renderJokes.bind(this);
   }
 
-  componentWillMount() {
-    this.props.getRoutineJokes(this.props.oneRoutine.id);
-  }
+  // componentWillMount() {
+  //   this.props.getRoutineJokes(this.props.oneRoutine.id);
+  // }
 
   renderJokes(joke, index) {
     return (

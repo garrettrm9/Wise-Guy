@@ -13,7 +13,9 @@ font-family: 'Gloria Hallelujah', cursive;*/
   padding: 5px;
   background-color: silver;
   font-family: "Lobster", cursive;
-  justify-content: left;
+  align-items: left;
+  text-align: left;
+  width: 100px;
 }
 
 a {
@@ -27,6 +29,24 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Indie Flower", cursive;
+}
+
+@media screen and (min-width: 980px) {
+  body {
+    zoom: 100%;
+  }
+}
+
+@media screen and (max-width: 979px) {
+  body {
+    zoom: 75%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    zoom: 50%;
+  }
 }
 
 h1 {
@@ -81,7 +101,20 @@ span {
   padding: 30px;
   border: 2px black solid;
   background-color: white;
+  width: auto;
 }
+
+/*.desktop {
+  max-width: 100%;
+}
+
+.table {
+  max-width: 66%;
+}
+
+.mobile {
+  max-width: 33%;
+}*/
 
 .tile {
   padding: 30px;
